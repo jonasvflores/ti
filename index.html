@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Atividade Avaliativa 1 – HTML & CSS</title>
 
-
   <!-- Tá procurando o quê, aqui? -->
 
   <style>
@@ -100,6 +99,11 @@
       font-family: inherit;
       resize: vertical;
       min-height: 92px;
+
+      /* Reforço para respostas longas não “estourarem” no PDF/print */
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     .short { min-height: unset; height: 40px; }
 
@@ -114,6 +118,14 @@
       .sheet { box-shadow: none; border: none; margin: 0; }
       .controls, .no-print { display: none !important; }
       a[href]:after { content: " (" attr(href) ")"; font-size: 11px; }
+
+      /* Evitar cortes de conteúdo e manter blocos inteiros */
+      .q { break-inside: avoid; page-break-inside: avoid; }
+      textarea, input[type="text"] {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
     }
   </style>
 </head>
@@ -121,7 +133,7 @@
   <div class="sheet">
     <header>
       <h1>Atividade Avaliativa 1 – HTML &amp; CSS</h1>
-      <p>Com base no PDF que está na pasta <strong>Public</strong> ("Por dentro do HTML e CSS"), resolvam as questões.</p>
+      <p>Com base nos PDFs na pasta <strong>Public</strong> — com foco em <em>Por dentro do HTML e CSS</em> — resolvam as questões.</p>
       <div class="meta">
         <div>
           <label for="aluno">Nome</label>
@@ -145,7 +157,7 @@
     <main>
       <h2 class="section-title">Questões</h2>
 
-      <!-- 1 -->
+      <!-- 1 (mantida, leve) -->
       <section class="q">
         <h3>1) Verdadeiro ou falso — O HTML serve apenas para formatar visualmente o texto, sem relação com significado.</h3>
         <div class="vf">
@@ -154,20 +166,20 @@
         </div>
       </section>
 
-      <!-- 2 -->
+      <!-- 2 (mantida, leve) -->
       <section class="q">
         <h3>2) Complete a frase — O HTML organiza o conteúdo de forma <u>__________</u>, enquanto o CSS define a <u>__________</u>.</h3>
         <input type="text" class="short" name="q2a" placeholder="Primeira lacuna" />
         <input type="text" class="short" name="q2b" placeholder="Segunda lacuna" style="margin-top:8px" />
       </section>
 
-      <!-- 3 -->
+      <!-- 3 (mantida, semântica) -->
       <section class="q">
         <h3>3) Explique — Qual a diferença entre <code class="inline-code">&lt;strong&gt;</code> e <code class="inline-code">&lt;b&gt;</code> em termos de semântica?</h3>
         <textarea name="q3" placeholder="Responda em 1–3 linhas"></textarea>
       </section>
 
-      <!-- 4 -->
+      <!-- 4 (mantida, identificação de erro) -->
       <section class="q">
         <h3>4) Identifique o problema</h3>
         <pre><code>&lt;html&gt;
@@ -181,17 +193,13 @@
         <textarea name="q4" placeholder="O que está errado? Como corrigir?"></textarea>
       </section>
 
-      <!-- 5 -->
+      <!-- 5 (nova, fundamentos semântica + acessibilidade) -->
       <section class="q">
-        <h3>5) Interpretação de código (CSS)</h3>
-        <pre><code>p {
-  color: blue;
-  font-size: 18px;
-}</code></pre>
-        <textarea name="q5" placeholder="O que acontecerá com os parágrafos?"></textarea>
+        <h3>5) Explique — Por que a semântica do HTML melhora acessibilidade e SEO? Cite um exemplo de tag semântica e seu benefício.</h3>
+        <textarea name="q5" placeholder="Ex.: &lt;nav&gt; ajuda leitores de tela a identificar a área de navegação"></textarea>
       </section>
 
-      <!-- 6 -->
+      <!-- 6 (mantida, CSS declarativo) -->
       <section class="q">
         <h3>6) Verdadeiro ou falso — O CSS é uma linguagem imperativa, pois define passo a passo a execução.</h3>
         <div class="vf">
@@ -200,19 +208,21 @@
         </div>
       </section>
 
-      <!-- 7 -->
+      <!-- 7 (mantida, unidade) -->
       <section class="q">
         <h3>7) Complete — No CSS, a unidade <strong>px</strong> representa __________.</h3>
         <input type="text" class="short" name="q7" />
       </section>
 
-      <!-- 8 -->
+      <!-- isso já vimos em aula, eu falei sobre -->
+
+      <!-- 8 (nova, DOM como árvore) -->
       <section class="q">
-        <h3>8) Explique — O que é <em>herança</em> no CSS e como afeta elementos filhos?</h3>
-        <textarea name="q8" placeholder="Explique brevemente"></textarea>
+        <h3>8) Explique — O que é o DOM e por que dizemos que o HTML é uma árvore lógica?</h3>
+        <textarea name="q8" placeholder="Fale de nós, pais/filhos e hierarquia de elementos"></textarea>
       </section>
 
-      <!-- 9 -->
+      <!-- 9 (mantida, erro CSS) -->
       <section class="q">
         <h3>9) Identifique o problema (CSS)</h3>
         <pre><code>h1 {
@@ -222,7 +232,7 @@
         <textarea name="q9" placeholder="Aponte e corrija o erro"></textarea>
       </section>
 
-      <!-- 10 -->
+      <!-- 10 (mantida, interpretação HTML) -->
       <section class="q">
         <h3>10) Interpretação de código (HTML)</h3>
         <pre><code>&lt;ul&gt;
@@ -233,20 +243,20 @@
         <textarea name="q10" placeholder="Como isso aparece no navegador?"></textarea>
       </section>
 
-      <!-- 11 -->
+      <!-- 11 (mantida, acessibilidade semântica) -->
       <section class="q">
         <h3>11) Explique — Por que usar &lt;header&gt;, &lt;nav&gt; e &lt;footer&gt; ajuda na acessibilidade?</h3>
         <textarea name="q11" placeholder="1–3 linhas"></textarea>
       </section>
 
-      <!-- 12 -->
+      <!-- 12 (mantida, link) -->
       <section class="q">
         <h3>12) Identifique o problema (link)</h3>
         <pre><code>&lt;a&gt;https://meusite.com&lt;/a&gt;</code></pre>
         <textarea name="q12" placeholder="O que falta para funcionar corretamente?"></textarea>
       </section>
 
-      <!-- 13 -->
+      <!-- 13 (mantida, id único) -->
       <section class="q">
         <h3>13) Verdadeiro ou falso — Um mesmo <code>id</code> pode ser aplicado a vários elementos na mesma página.</h3>
         <div class="vf">
@@ -255,20 +265,20 @@
         </div>
       </section>
 
-      <!-- 14 -->
+      <!-- 14 (mantida, link target) -->
       <section class="q">
         <h3>14) Interpretação de código (link)</h3>
         <pre><code>&lt;a href="contato.html" target="_blank"&gt;Fale conosco&lt;/a&gt;</code></pre>
         <textarea name="q14" placeholder="O que acontece ao clicar?"></textarea>
       </section>
 
-      <!-- 15 -->
+      <!-- 15 (mantida, box model) -->
       <section class="q">
         <h3>15) Complete — O modelo de caixa (Box Model) é composto por: __________, __________, __________ e __________.</h3>
         <input type="text" class="short" name="q15" placeholder="Liste na ordem" />
       </section>
 
-      <!-- 16 -->
+      <!-- 16 (mantida, margin x padding) -->
       <section class="q">
         <h3>16) Verdadeiro ou falso — <code>margin</code> define o espaçamento interno de um elemento.</h3>
         <div class="vf">
@@ -277,7 +287,7 @@
         </div>
       </section>
 
-      <!-- 17 -->
+      <!-- 17 (mantida, estrutura) -->
       <section class="q">
         <h3>17) Identifique o problema (estrutura)</h3>
         <pre><code>&lt;head&gt;
@@ -289,13 +299,13 @@
         <textarea name="q17" placeholder="Qual é o erro estrutural?"></textarea>
       </section>
 
-      <!-- 18 -->
+      <!-- 18 (mantida, cascata) -->
       <section class="q">
         <h3>18) Explique — O que significa “cascata” no CSS? Cite ao menos dois critérios usados pelo navegador.</h3>
         <textarea name="q18" placeholder="Ex.: ordem, especificidade, herança…"></textarea>
       </section>
 
-      <!-- 19 -->
+      <!-- 19 (mantida, seletor ID) -->
       <section class="q">
         <h3>19) Interpretação de seletor</h3>
         <pre><code>#menu {
@@ -305,7 +315,7 @@
         <textarea name="q19" placeholder="Que elementos serão afetados?"></textarea>
       </section>
 
-      <!-- 20 -->
+      <!-- 20 (mantida, seletor universal) -->
       <section class="q">
         <h3>20) Verdadeiro ou falso — O seletor universal <code>*</code> pode afetar todos os elementos da página.</h3>
         <div class="vf">
@@ -314,7 +324,7 @@
         </div>
       </section>
 
-      <!-- 21 -->
+      <!-- 21 (mantida, erro CSS) -->
       <section class="q">
         <h3>21) Identifique o problema (CSS)</h3>
         <pre><code>.destaque {
@@ -323,13 +333,15 @@
         <textarea name="q21" placeholder="Aponte e corrija o erro"></textarea>
       </section>
 
-      <!-- 22 -->
+      <!-- isso já vimos em aula, eu falei sobre -->
+
+      <!-- 22 (mantida, web como grafo) -->
       <section class="q">
         <h3>22) Explique — Por que podemos dizer que a Web funciona como um grafo?</h3>
         <textarea name="q22" placeholder="Fale de nós (páginas) e arestas (links)"></textarea>
       </section>
 
-      <!-- 23 -->
+      <!-- 23 (mantida, lista de definições) -->
       <section class="q">
         <h3>23) Interpretação de código (lista de definições)</h3>
         <pre><code>&lt;dl&gt;
@@ -341,7 +353,7 @@
         <textarea name="q23" placeholder="Como isso aparece na página?"></textarea>
       </section>
 
-      <!-- 24 -->
+      <!-- 24 (mantida, u x em) -->
       <section class="q">
         <h3>24) Verdadeiro ou falso — &lt;u&gt; dá ênfase semântica, como &lt;em&gt;.</h3>
         <div class="vf">
@@ -350,10 +362,59 @@
         </div>
       </section>
 
-      <!-- 25 -->
+      <!-- 25 (mantida, classes vs ids) -->
       <section class="q">
         <h3>25) Explique — Cite duas diferenças entre <strong>classes</strong> e <strong>IDs</strong> no CSS.</h3>
         <textarea name="q25" placeholder="Diga quando usar cada um"></textarea>
+      </section>
+
+      <!-- 26 (nova, especificidade prática) -->
+      <section class="q">
+        <h3>26) Interpretação/Conflito de Estilos — Qual regra “vence” e por quê?</h3>
+        <pre><code>p { color: green; }
+.highlight { color: blue; }
+#intro { color: red; }</code></pre>
+        <pre><code>&lt;p id="intro" class="highlight"&gt;Texto de exemplo&lt;/p&gt;</code></pre>
+        <textarea name="q26" placeholder="Explique usando especificidade e ordem/cascata"></textarea>
+      </section>
+
+      <!-- 27 (nova, pensamento computacional na web) -->
+      <section class="q">
+        <h3>27) Explique — Como aplicar <em>decomposição</em>, <em>padrões</em> e <em>abstração</em> na construção de um site simples (ex.: blog)?</h3>
+        <textarea name="q27" placeholder="Relacione seções do HTML, classes reutilizáveis e estruturas genéricas"></textarea>
+      </section>
+
+      <!-- isso já vimos em aula, eu falei sobre -->
+
+      <!-- 28 (nova, hiperlink como conceito de grafo) -->
+      <section class="q">
+        <h3>28) Interpretação — O que torna o hipertexto (e o elemento &lt;a&gt;) o “DNA” da Web? Dê um exemplo de uso correto de &lt;a&gt;.</h3>
+        <textarea name="q28" placeholder="Fale de nós e arestas; inclua href e texto clicável"></textarea>
+      </section>
+
+      <!-- 29 (nova, engenharia do front-end: performance/manutenibilidade) -->
+      <section class="q">
+        <h3>29) Explique — Dê dois exemplos de decisões em HTML/CSS que impactam performance e manutenibilidade no front-end.</h3>
+        <textarea name="q29" placeholder="Ex.: DOM enxuto, CSS modular/reutilizável, evitar estilos inline excessivos…"></textarea>
+      </section>
+
+      <!-- 30 (nova, pesada: síntese DOM + semântica + cascata) -->
+      <section class="q">
+        <h3>30) Síntese (nível avançado) — Dado o trecho a seguir, descreva a estrutura de dados (árvore DOM), a função semântica das tags e como a cascata aplicaria estilos.</h3>
+        <pre><code>&lt;main&gt;
+  &lt;article class="post destaque"&gt;
+    &lt;header&gt;
+      &lt;h1 id="titulo"&gt;Engenharia de Front-end&lt;/h1&gt;
+      &lt;p class="sub"&gt;Por que HTML é estrutura lógica?&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;p&gt;O &lt;strong&gt;DOM&lt;/strong&gt; organiza nós como uma árvore.&lt;/p&gt;
+      &lt;p&gt;Links &lt;a href="artigos.html"&gt;conectam&lt;/a&gt; documentos.&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;footer&gt;Atualizado em 2025&lt;/footer&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+        <textarea name="q30" placeholder="Fale de pais/filhos/irmãos, papel semântico de main/article/header/section/footer e prioridades de estilo por seletor"></textarea>
       </section>
 
     </main>
