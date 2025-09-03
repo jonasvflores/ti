@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Atividade Avaliativa 1 – HTML & CSS</title>
+  <title>Prova 1 – HTML & CSS</title>
 
-  <!-- Tá procurando o quê, aqui? -->
+  
 
+  
   <style>
     :root {
       --ink: #0d0f12;
@@ -19,7 +20,7 @@
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Helvetica Neue", sans-serif;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Helvetica Neue", sans-serif;
       color: var(--ink);
       background: var(--paper);
       margin: 0;
@@ -91,35 +92,33 @@
     .q pre, .q code { background: #f3f4f6; border: 1px solid #e5e7eb; padding: 8px; display: block; border-radius: 8px; overflow-x: auto; }
     .q .inline-code { display: inline; padding: 2px 6px; border-radius: 6px; }
 
-    textarea, input[type="text"] {
+    textarea, input[type="text"], select {
       width: 100%;
       padding: 10px;
       border: 1px solid var(--border);
       border-radius: 10px;
       font-family: inherit;
-      resize: vertical;
+      resize: none;
       min-height: 92px;
-
-      /* Reforço para respostas longas não “estourarem” no PDF/print */
+      overflow: hidden;
       white-space: pre-wrap;
       overflow-wrap: anywhere;
       word-break: break-word;
     }
     .short { min-height: unset; height: 40px; }
 
-    .vf { display:flex; gap: 16px; align-items: center; }
+    .vf { display:flex; gap: 16px; align-items: center; flex-wrap: wrap; }
     .vf label { display:flex; gap:6px; align-items:center; }
+
+    .hint { color: var(--muted); font-size: 13px; margin: 8px 0; }
 
     footer { padding: 16px 24px; color: var(--muted); font-size: 12px; }
 
-    /* Impressão */
     @media print {
       body { background: #fff; }
       .sheet { box-shadow: none; border: none; margin: 0; }
       .controls, .no-print { display: none !important; }
       a[href]:after { content: " (" attr(href) ")"; font-size: 11px; }
-
-      /* Evitar cortes de conteúdo e manter blocos inteiros */
       .q { break-inside: avoid; page-break-inside: avoid; }
       textarea, input[type="text"] {
         white-space: pre-wrap;
@@ -132,8 +131,8 @@
 <body>
   <div class="sheet">
     <header>
-      <h1>Atividade Avaliativa 1 – HTML &amp; CSS</h1>
-      <p>Com base nos PDFs na pasta <strong>Public</strong> — com foco em <em>Por dentro do HTML e CSS</em> — resolvam as questões.</p>
+      <h1>Prova 1 – HTML &amp; CSS - INDIVIDUAL</h1>
+      <p>Base: PDFs da pasta <strong>Public</strong>. Consulte somente o material durante a prova.</p>
       <div class="meta">
         <div>
           <label for="aluno">Nome</label>
@@ -151,306 +150,436 @@
     </header>
 
     <div class="notice">
-      <strong>Importante:</strong> além de <em>valer nota</em>(2), ela será meu guia para as próximas avaliações. Quanto mais natural for a sua resposta, melhor conseguirei ajustar o ritmo da turma, identificar dúvidas e aprofundar os pontos certos.
+      <strong>Importante:</strong> Qualquer tentativa de cola irá anular a prova automaticamente.
     </div>
 
     <main>
       <h2 class="section-title">Questões</h2>
 
-      <!-- 1 (mantida, leve) -->
-      <section class="q">
-        <h3>1) Verdadeiro ou falso — O HTML serve apenas para formatar visualmente o texto, sem relação com significado.</h3>
-        <div class="vf">
-          <label><input type="radio" name="q1" value="V"> V</label>
-          <label><input type="radio" name="q1" value="F"> F</label>
-        </div>
-      </section>
 
-      <!-- 2 (mantida, leve) -->
-      <section class="q">
-        <h3>2) Complete a frase — O HTML organiza o conteúdo de forma <u>__________</u>, enquanto o CSS define a <u>__________</u>.</h3>
-        <input type="text" class="short" name="q2a" placeholder="Primeira lacuna" />
-        <input type="text" class="short" name="q2b" placeholder="Segunda lacuna" style="margin-top:8px" />
-      </section>
 
-      <!-- 3 (mantida, semântica) -->
-      <section class="q">
-        <h3>3) Explique — Qual a diferença entre <code class="inline-code">&lt;strong&gt;</code> e <code class="inline-code">&lt;b&gt;</code> em termos de semântica?</h3>
-        <textarea name="q3" placeholder="Responda em 1–3 linhas"></textarea>
-      </section>
+      <main>
+        <h2 class="section-title">Questões</h2>
+  
+        <section class="q">
+          <h3>1) Verdadeiro ou falso -- HTML é apenas uma linguagem de apresentação, sem significado semântico.</h3>
+          <div class="vf">
+            <label><input type="radio" name="q1" value="V"> V</label>
+            <label><input type="radio" name="q1" value="F"> F</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>2) Múltipla escolha -- Qual tag é mais adequada para marcar um bloco de navegação principal?</h3>
+          <div>
+            <label><input type="radio" name="q2" value="A"> A) &lt;div&gt;</label><br>
+            <label><input type="radio" name="q2" value="B"> B) &lt;nav&gt;</label><br>
+            <label><input type="radio" name="q2" value="C"> C) &lt;section&gt;</label><br>
+            <label><input type="radio" name="q2" value="D"> D) &lt;header&gt;</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>3) Complete -- O HTML organiza o conteúdo de forma <u>__________</u> e o CSS define a <u>__________</u>.</h3>
+          <input type="text" class="short" name="q3a" placeholder="Primeira lacuna" />
+          <input type="text" class="short" name="q3b" placeholder="Segunda lacuna" style="margin-top:8px" />
+        </section>
+  
+        <section class="q">
+          <h3>4) Interpretação -- Explique a diferença entre &lt;strong&gt; e &lt;b&gt; </h3>
+          <textarea name="q4" placeholder="1–3 linhas"></textarea>
+        </section>
+  
+        <section class="q">
+          <h3>5) Múltipla escolha -- Qual alternativa descreve melhor o Box Model?</h3>
+          <div>
+            <label><input type="radio" name="q5" value="A"> A) Conteúdo >> margin >> border >> padding</label><br>
+            <label><input type="radio" name="q5" value="B"> B) Padding >> conteúdo >> border >> margin</label><br>
+            <label><input type="radio" name="q5" value="C"> C) Conteúdo >> padding >> border >> margin</label><br>
+            <label><input type="radio" name="q5" value="D"> D) Border >> conteúdo >> padding >> margin</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>6) Identifique o problema (HTML)</h3>
+          <pre><code>&lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Página&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h2&gt;Olá&lt;/h3&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;</code></pre>
+          <textarea name="q6" placeholder="O que está errado e como corrigir?"></textarea>
+        </section>
+  
+        <section class="q">
+          <h3>7) Verdadeiro ou falso -- O CSS é declarativo; ele define estados e não comandos sequenciais.</h3>
+          <div class="vf">
+            <label><input type="radio" name="q7" value="V"> V</label>
+            <label><input type="radio" name="q7" value="F"> F</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>8) Explique -- O que é o DOM? Dê 2 características que justificam chamá-lo de "árvore".</h3>
+          <textarea name="q8" placeholder="Fale de nós, filhos e hierarquia"></textarea>
+        </section>
+  
+        <section class="q">
+          <h3>9) Múltipla escolha -- Qual seletor tem maior especificidade?</h3>
+          <div>
+            <label><input type="radio" name="q9" value="A"> A) p</label><br>
+            <label><input type="radio" name="q9" value="B"> B) .card</label><br>
+            <label><input type="radio" name="q9" value="C"> C) #principal</label><br>
+            <label><input type="radio" name="q9" value="D"> D) [data-role="x"]</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>10) Identifique o problema (CSS)</h3>
+          <pre><code>h1 {
+    color: blue
+    font-size: 24px;
+  }</code></pre>
+          <textarea name="q10" placeholder="Aponte e corrija o erro"></textarea>
+        </section>
+  
+        <section class="q">
+          <h3>11) Interpretação -- Como fica visualmente no navegador o código abaixo?</h3>
+          <pre><code>&lt;ol&gt;
+    &lt;li&gt;Casa&lt;/li&gt;
+    &lt;li&gt;Carro&lt;/li&gt;
+    &lt;li&gt;Bicicleta&lt;/li&gt;
+  &lt;/ol&gt;</code></pre>
+          <textarea name="q11" placeholder="Descreva a aparência (marcadores, quebra de linha, etc.)"></textarea>
+        </section>
+  
+        <section class="q">
+          <h3>12) Verdadeiro ou falso -- Um mesmo id pode ser usado em mais de um elemento na mesma página.</h3>
+          <div class="vf">
+            <label><input type="radio" name="q12" value="V"> V</label>
+            <label><input type="radio" name="q12" value="F"> F</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>13) Múltipla escolha -- Qual etiqueta é mais adequada para marcar o rodapé de uma página?</h3>
+          <div>
+            <label><input type="radio" name="q13" value="A"> A) &lt;footer&gt;</label><br>
+            <label><input type="radio" name="q13" value="B"> B) &lt;aside&gt;</label><br>
+            <label><input type="radio" name="q13" value="C"> C) &lt;nav&gt;</label><br>
+            <label><input type="radio" name="q13" value="D"> D) &lt;header&gt;</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>14) Complete -- No CSS a unidade <strong>px</strong> representa __________.</h3>
+          <input type="text" class="short" name="q14" />
+        </section>
+  
+        <section class="q">
+          <h3>15) Explique -- Por que usar &lt;nav&gt;, &lt;header&gt; e &lt;footer&gt; melhora a acessibilidade?</h3>
+          <textarea name="q15" placeholder="1–3 linhas"></textarea>
+        </section>
+  
+        <section class="q">
+          <h3>16) Múltipla escolha -- Qual propriedade é usada para remover a bolinha de lista em &lt;ul&gt;?</h3>
+          <div>
+            <label><input type="radio" name="q16" value="A"> A) list-style: none;</label><br>
+            <label><input type="radio" name="q16" value="B"> B) display: none;</label><br>
+            <label><input type="radio" name="q16" value="C"> C) list-type: none;</label><br>
+            <label><input type="radio" name="q16" value="D"> D) marker: none;</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>17) Identifique o problema (link)</h3>
+          <pre><code>&lt;a&gt;https://minhapagina.com&lt;/a&gt;</code></pre>
+          <textarea name="q17" placeholder="O que falta para o link funcionar corretamente?"></textarea>
+        </section>
+  
+        <section class="q">
+          <h3>18) Verdadeiro ou falso -- &lt;em&gt; indica ênfase semântica e &lt;i&gt; apenas itálico visual.</h3>
+          <div class="vf">
+            <label><input type="radio" name="q18" value="V"> V</label>
+            <label><input type="radio" name="q18" value="F"> F</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>19) Múltipla escolha -- Em termos de desempenho, qual prática ajuda a reduzir o tamanho do DOM?</h3>
+          <div>
+            <label><input type="radio" name="q19" value="A"> A) Criar muitos elementos aninhados para controle detalhado</label><br>
+            <label><input type="radio" name="q19" value="B"> B) Reutilizar estruturas e evitar nós desnecessários</label><br>
+            <label><input type="radio" name="q19" value="C"> C) Usar muitos IDs únicos</label><br>
+            <label><input type="radio" name="q19" value="D"> D) Incluir CSS inline em todos os elementos</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>20) Explique -- O que é "cascata" no CSS? Cite pelo menos um critério que influencia qual regra é aplicada.</h3>
+          <textarea name="q20" placeholder="Ex.: especificidade, ordem de leitura, herança"></textarea>
+        </section>
+  
+        <section class="q">
+          <h3>21) Identifique o problema (CSS)</h3>
+          <pre><code>.destaque {
+    background-color yellow;
+    padding: 10px;
+  }</code></pre>
+          <textarea name="q21" placeholder="Aponte e corrija o erro"></textarea>
+        </section>
+  
+        <section class="q">
+          <h3>22) Múltipla escolha -- Qual é um exemplo de <em>decomposição</em> ao construir um site de notícias?</h3>
+          <div>
+            <label><input type="radio" name="q22" value="A"> A) Escrever todo o HTML de uma vez sem planejar</label><br>
+            <label><input type="radio" name="q22" value="B"> B) Separar em cabeçalho, lista de notícias, artigos e rodapé</label><br>
+            <label><input type="radio" name="q22" value="C"> C) Colocar todo o CSS em cada elemento individual</label><br>
+            <label><input type="radio" name="q22" value="D"> D) Ignorar padrões e repetir código</label>
+          </div>
+          <div class="hint">(base: Desenvolvimento Web sob o pensamento computacional)</div>
+        </section>
+  
+        <section class="q">
+          <h3>23) Interpretação — Explique como &lt;dl&gt;, &lt;dt&gt; e &lt;dd&gt; são usados e qual  a diferença para  &lt;ul&gt;.</h3>
+          <textarea name="q23" placeholder="Dê um exemplo prático"></textarea>
+        </section>
+  
+        <section class="q">
+          <h3>24) Verdadeiro ou falso -- O seletor universal (*) pode zerar margin e padding de todos os elementos da página.</h3>
+          <div class="vf">
+            <label><input type="radio" name="q24" value="V"> V</label>
+            <label><input type="radio" name="q24" value="F"> F</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>25) Múltipla escolha -- Qual alternativa representa corretamente a prioridade (especificidade) do CSS do maior para o menor?</h3>
+          <div>
+            <label><input type="radio" name="q25" value="A"> A) Classe &gt; ID &gt; Inline &gt; Tag</label><br>
+            <label><input type="radio" name="q25" value="B"> B) Inline &gt; ID &gt; Classe &gt; Tag</label><br>
+            <label><input type="radio" name="q25" value="C"> C) ID &gt; Inline &gt; Classe &gt; Tag</label><br>
+            <label><input type="radio" name="q25" value="D"> D) Tag &gt; Classe &gt; ID &gt; Inline</label>
+          </div>
+        </section>
+  
+        <section class="q">
+          <h3>26) Explique -- Por que a semântica é importante para SEO e leitores de tela?</h3>
+          <textarea name="q26" placeholder="Ex.: &lt;h1&gt; para título principal, &lt;nav&gt; para navegação"></textarea>
+        </section>
+  
 
-      <!-- 4 (mantida, identificação de erro) -->
       <section class="q">
-        <h3>4) Identifique o problema</h3>
+        <h3>27) Identifique o problema</h3>
         <pre><code>&lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;Meu site&lt;/title&gt;
+    &lt;title&gt;Exemplo&lt;/head&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;h1&gt;Título&lt;/h2&gt;
+    &lt;h1&gt;Título Principal
+    &lt;p&gt;Parágrafo 1&lt;/p&gt;
+    &lt;section&gt;
+      &lt;div&gt;
+        &lt;h2&gt;Subtítulo&lt;/h3&gt;
+        &lt;p&gt;Texto em parágrafo e tal
+      &lt;/div&gt;
+    &lt;/article&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-        <textarea name="q4" placeholder="O que está errado? Como corrigir?"></textarea>
+        <textarea name="q27" placeholder="Liste todos os erros e corrija"></textarea>
       </section>
 
-      <!-- 5 (nova, fundamentos semântica + acessibilidade) -->
       <section class="q">
-        <h3>5) Explique — Por que a semântica do HTML melhora acessibilidade e SEO? Cite um exemplo de tag semântica e seu benefício.</h3>
-        <textarea name="q5" placeholder="Ex.: &lt;nav&gt; ajuda leitores de tela a identificar a área de navegação"></textarea>
+        <h3>28) Identifique o problema -- Analise o trecho HTML abaixo e descreva a árvore DOM resultante (pais/filhos/irmãos).</h3>
+        <pre><code>&lt;body&gt;
+  &lt;main&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Seção&lt;/h2&gt;
+      &lt;p&gt;Texto&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;aside&gt;&lt;p&gt;Lateral&lt;/p&gt;&lt;/aside&gt;
+  &lt;/main&gt;
+&lt;/body&gt;</code></pre>
+        <textarea name="q28" placeholder="Descreva nós e relacionamentos"></textarea>
       </section>
+      
+<section class="q">
+    <h3>29) Identifique o problema </h3>
+    <pre><code>body {
+font-family Arial, sans-serif;
+background-color #f5f5f5
+}
 
-      <!-- 6 (mantida, CSS declarativo) -->
-      <section class="q">
-        <h3>6) Verdadeiro ou falso — O CSS é uma linguagem imperativa, pois define passo a passo a execução.</h3>
-        <div class="vf">
-          <label><input type="radio" name="q6" value="V"> V</label>
-          <label><input type="radio" name="q6" value="F"> F</label>
-        </div>
-      </section>
+.container {
+max-width 1200px;
+margin auto
+padding 20px
+color blue
 
-      <!-- 7 (mantida, unidade) -->
-      <section class="q">
-        <h3>7) Complete — No CSS, a unidade <strong>px</strong> representa __________.</h3>
-        <input type="text" class="short" name="q7" />
-      </section>
 
-      <!-- isso já vimos em aula, eu falei sobre -->
-
-      <!-- 8 (nova, DOM como árvore) -->
-      <section class="q">
-        <h3>8) Explique — O que é o DOM e por que dizemos que o HTML é uma árvore lógica?</h3>
-        <textarea name="q8" placeholder="Fale de nós, pais/filhos e hierarquia de elementos"></textarea>
-      </section>
-
-      <!-- 9 (mantida, erro CSS) -->
-      <section class="q">
-        <h3>9) Identifique o problema (CSS)</h3>
-        <pre><code>h1 {
-  color: red
-  font-size: 20px;
+h1 {
+font-size: 32;
+color: #333
+text-align center;
 }</code></pre>
-        <textarea name="q9" placeholder="Aponte e corrija o erro"></textarea>
-      </section>
+    <textarea name="q29" placeholder="Liste todos os erros e corrija"></textarea>
+  </section>
+  
+  
+  <section class="q">
+    <h3>30) Explique -- O que significa dizer que a Web é um grafo? Relacione com o elemento &lt;a&gt;.</h3>
+    <textarea name="q30" placeholder="Fale de nós, arestas e hyperlinks"></textarea>
+  </section>
 
-      <!-- 10 (mantida, interpretação HTML) -->
-      <section class="q">
-        <h3>10) Interpretação de código (HTML)</h3>
-        <pre><code>&lt;ul&gt;
-  &lt;li&gt;Maçã&lt;/li&gt;
-  &lt;li&gt;Banana&lt;/li&gt;
-  &lt;li&gt;Laranja&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-        <textarea name="q10" placeholder="Como isso aparece no navegador?"></textarea>
-      </section>
-
-      <!-- 11 (mantida, acessibilidade semântica) -->
-      <section class="q">
-        <h3>11) Explique — Por que usar &lt;header&gt;, &lt;nav&gt; e &lt;footer&gt; ajuda na acessibilidade?</h3>
-        <textarea name="q11" placeholder="1–3 linhas"></textarea>
-      </section>
-
-      <!-- 12 (mantida, link) -->
-      <section class="q">
-        <h3>12) Identifique o problema (link)</h3>
-        <pre><code>&lt;a&gt;https://meusite.com&lt;/a&gt;</code></pre>
-        <textarea name="q12" placeholder="O que falta para funcionar corretamente?"></textarea>
-      </section>
-
-      <!-- 13 (mantida, id único) -->
-      <section class="q">
-        <h3>13) Verdadeiro ou falso — Um mesmo <code>id</code> pode ser aplicado a vários elementos na mesma página.</h3>
-        <div class="vf">
-          <label><input type="radio" name="q13" value="V"> V</label>
-          <label><input type="radio" name="q13" value="F"> F</label>
-        </div>
-      </section>
-
-      <!-- 14 (mantida, link target) -->
-      <section class="q">
-        <h3>14) Interpretação de código (link)</h3>
-        <pre><code>&lt;a href="contato.html" target="_blank"&gt;Fale conosco&lt;/a&gt;</code></pre>
-        <textarea name="q14" placeholder="O que acontece ao clicar?"></textarea>
-      </section>
-
-      <!-- 15 (mantida, box model) -->
-      <section class="q">
-        <h3>15) Complete — O modelo de caixa (Box Model) é composto por: __________, __________, __________ e __________.</h3>
-        <input type="text" class="short" name="q15" placeholder="Liste na ordem" />
-      </section>
-
-      <!-- 16 (mantida, margin x padding) -->
-      <section class="q">
-        <h3>16) Verdadeiro ou falso — <code>margin</code> define o espaçamento interno de um elemento.</h3>
-        <div class="vf">
-          <label><input type="radio" name="q16" value="V"> V</label>
-          <label><input type="radio" name="q16" value="F"> F</label>
-        </div>
-      </section>
-
-      <!-- 17 (mantida, estrutura) -->
-      <section class="q">
-        <h3>17) Identifique o problema (estrutura)</h3>
-        <pre><code>&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Título&lt;/h1&gt;
-  &lt;/body&gt;
-&lt;/head&gt;</code></pre>
-        <textarea name="q17" placeholder="Qual é o erro estrutural?"></textarea>
-      </section>
-
-      <!-- 18 (mantida, cascata) -->
-      <section class="q">
-        <h3>18) Explique — O que significa “cascata” no CSS? Cite ao menos dois critérios usados pelo navegador.</h3>
-        <textarea name="q18" placeholder="Ex.: ordem, especificidade, herança…"></textarea>
-      </section>
-
-      <!-- 19 (mantida, seletor ID) -->
-      <section class="q">
-        <h3>19) Interpretação de seletor</h3>
-        <pre><code>#menu {
-  background-color: black;
-  color: white;
-}</code></pre>
-        <textarea name="q19" placeholder="Que elementos serão afetados?"></textarea>
-      </section>
-
-      <!-- 20 (mantida, seletor universal) -->
-      <section class="q">
-        <h3>20) Verdadeiro ou falso — O seletor universal <code>*</code> pode afetar todos os elementos da página.</h3>
-        <div class="vf">
-          <label><input type="radio" name="q20" value="V"> V</label>
-          <label><input type="radio" name="q20" value="F"> F</label>
-        </div>
-      </section>
-
-      <!-- 21 (mantida, erro CSS) -->
-      <section class="q">
-        <h3>21) Identifique o problema (CSS)</h3>
-        <pre><code>.destaque {
-  background-color yellow;
-}</code></pre>
-        <textarea name="q21" placeholder="Aponte e corrija o erro"></textarea>
-      </section>
-
-      <!-- isso já vimos em aula, eu falei sobre -->
-
-      <!-- 22 (mantida, web como grafo) -->
-      <section class="q">
-        <h3>22) Explique — Por que podemos dizer que a Web funciona como um grafo?</h3>
-        <textarea name="q22" placeholder="Fale de nós (páginas) e arestas (links)"></textarea>
-      </section>
-
-      <!-- 23 (mantida, lista de definições) -->
-      <section class="q">
-        <h3>23) Interpretação de código (lista de definições)</h3>
-        <pre><code>&lt;dl&gt;
-  &lt;dt&gt;HTML&lt;/dt&gt;
-  &lt;dd&gt;Linguagem de marcação para estruturar conteúdo&lt;/dd&gt;
-  &lt;dt&gt;CSS&lt;/dt&gt;
-  &lt;dd&gt;Linguagem para estilizar elementos HTML&lt;/dd&gt;
-&lt;/dl&gt;</code></pre>
-        <textarea name="q23" placeholder="Como isso aparece na página?"></textarea>
-      </section>
-
-      <!-- 24 (mantida, u x em) -->
-      <section class="q">
-        <h3>24) Verdadeiro ou falso — &lt;u&gt; dá ênfase semântica, como &lt;em&gt;.</h3>
-        <div class="vf">
-          <label><input type="radio" name="q24" value="V"> V</label>
-          <label><input type="radio" name="q24" value="F"> F</label>
-        </div>
-      </section>
-
-      <!-- 25 (mantida, classes vs ids) -->
-      <section class="q">
-        <h3>25) Explique — Cite duas diferenças entre <strong>classes</strong> e <strong>IDs</strong> no CSS.</h3>
-        <textarea name="q25" placeholder="Diga quando usar cada um"></textarea>
-      </section>
-
-      <!-- 26 (nova, especificidade prática) -->
-      <section class="q">
-        <h3>26) Interpretação/Conflito de Estilos — Qual regra “vence” e por quê?</h3>
-        <pre><code>p { color: green; }
+  <section class="q">
+    <h3>31) Interpretação / Conflito de estilos-- Qual cor será aplicada e por quê?</h3>
+    <pre><code>p { color: green; }
 .highlight { color: blue; }
 #intro { color: red; }</code></pre>
-        <pre><code>&lt;p id="intro" class="highlight"&gt;Texto de exemplo&lt;/p&gt;</code></pre>
-        <textarea name="q26" placeholder="Explique usando especificidade e ordem/cascata"></textarea>
-      </section>
+    <pre><code>&lt;p id="intro" class="highlight"&gt;Exemplo&lt;/p&gt;</code></pre>
+    <textarea name="q31" placeholder="Explique usando especificidade e ordem"></textarea>
+  </section>
 
-      <!-- 27 (nova, pensamento computacional na web) -->
-      <section class="q">
-        <h3>27) Explique — Como aplicar <em>decomposição</em>, <em>padrões</em> e <em>abstração</em> na construção de um site simples (ex.: blog)?</h3>
-        <textarea name="q27" placeholder="Relacione seções do HTML, classes reutilizáveis e estruturas genéricas"></textarea>
-      </section>
-
-      <!-- isso já vimos em aula, eu falei sobre -->
-
-      <!-- 28 (nova, hiperlink como conceito de grafo) -->
-      <section class="q">
-        <h3>28) Interpretação — O que torna o hipertexto (e o elemento &lt;a&gt;) o “DNA” da Web? Dê um exemplo de uso correto de &lt;a&gt;.</h3>
-        <textarea name="q28" placeholder="Fale de nós e arestas; inclua href e texto clicável"></textarea>
-      </section>
-
-      <!-- 29 (nova, engenharia do front-end: performance/manutenibilidade) -->
-      <section class="q">
-        <h3>29) Explique — Dê dois exemplos de decisões em HTML/CSS que impactam performance e manutenibilidade no front-end.</h3>
-        <textarea name="q29" placeholder="Ex.: DOM enxuto, CSS modular/reutilizável, evitar estilos inline excessivos…"></textarea>
-      </section>
-
-      <!-- 30 (nova, pesada: síntese DOM + semântica + cascata) -->
-      <section class="q">
-        <h3>30) Síntese (nível avançado) — Dado o trecho a seguir, descreva a estrutura de dados (árvore DOM), a função semântica das tags e como a cascata aplicaria estilos.</h3>
-        <pre><code>&lt;main&gt;
-  &lt;article class="post destaque"&gt;
-    &lt;header&gt;
-      &lt;h1 id="titulo"&gt;Engenharia de Front-end&lt;/h1&gt;
-      &lt;p class="sub"&gt;Por que HTML é estrutura lógica?&lt;/p&gt;
-    &lt;/header&gt;
-    &lt;section&gt;
-      &lt;p&gt;O &lt;strong&gt;DOM&lt;/strong&gt; organiza nós como uma árvore.&lt;/p&gt;
-      &lt;p&gt;Links &lt;a href="artigos.html"&gt;conectam&lt;/a&gt; documentos.&lt;/p&gt;
-    &lt;/section&gt;
-    &lt;footer&gt;Atualizado em 2025&lt;/footer&gt;
-  &lt;/article&gt;
-&lt;/main&gt;</code></pre>
-        <textarea name="q30" placeholder="Fale de pais/filhos/irmãos, papel semântico de main/article/header/section/footer e prioridades de estilo por seletor"></textarea>
-      </section>
-
-    </main>
-
-    <div class="controls no-print">
-      <button class="btn" type="button" id="btnLimpar">Limpar respostas</button>
-      <button class="btn primary" type="button" id="btnPDF">Baixar PDF</button>
+  <section class="q">
+    <h3>32) Múltipla escolha -- Qual é uma boa aplicação de <em>abstração</em> ao criar componentes em HTML/CSS?</h3>
+    <div>
+      <label><input type="radio" name="q32" value="A"> A) Repetir o mesmo HTML para cada card com pequenas mudanças</label><br>
+      <label><input type="radio" name="q32" value="B"> B) Criar uma estrutura genérica (classe .card) e reutilizá-la com conteúdos diferentes</label><br>
+      <label><input type="radio" name="q32" value="C"> C) Colocar estilos distintos inline em cada card</label><br>
+      <label><input type="radio" name="q32" value="D"> D) Hard-codear textos e estruturas no HTML sem classes</label>
     </div>
+    <div class="hint">(base: Desenvolvimento Web sob o pensamento computacional)</div>
+  </section>
 
-    <footer>
-      <p>Preencha com calma e sinceridade. Obrigado! 🙂</p>
-    </footer>
-  </div>
+  <section class="q">
+    <h3>33) Síntese -- Dado o trecho abaixo, descreva: (a) árvore DOM simplificada, (b) papel semântico de cada tag, (c) qual seletor teria prioridade para estilizar o título &lt;h1&gt;.</h3>
+    <pre><code>&lt;main&gt;
+&lt;article class="post destaque"&gt;
+&lt;header&gt;
+  &lt;h1 id="titulo"&gt;Engenharia do Front-end&lt;/h1&gt;
+  &lt;p class="meta"&gt;Autor — 2025&lt;/p&gt;
+&lt;/header&gt;
+&lt;section&gt;
+  &lt;p&gt;Conteúdo principal...&lt;/p&gt;
+&lt;/section&gt;
+&lt;/article&gt;
+&lt;/main&gt;</code></pre>
+    <textarea name="q33" placeholder="Fale de pais/filhos, semântica e ordem de especificidade"></textarea>
+  </section>
 
-  <script>
-    // Preenche data automaticamente (BR)
-    const data = document.getElementById('data');
-    if (data && !data.value) {
-      const d = new Date();
-      const pad = n => String(n).padStart(2, '0');
-      data.value = `${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()}`;
-    }
+  <section class="q">
+    <h3>34) Identifique o problema (HTML)</h3>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Site de Notícias&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div&gt;
+  &lt;h1&gt;Notícias Principais&lt;/h1&gt;
+  &lt;div&gt;Notícia 1&lt;/div&gt;
+  &lt;p&gt;Descrição da notícia.&lt;/p&gt;
+  &lt;div&gt;Notícia 2&lt;/div&gt;
+  &lt;p&gt;Outra descrição.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;Rodapé do site&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <textarea name="q34" placeholder="O que está errado (considere semântica e estrutura) e como corrigir?"></textarea>
+    <div class="hint">(base: Por dentro do HTML e CSS - semântica e estrutura)</div>
+  </section>
 
-    // Botão de PDF usa a impressão do navegador
-    document.getElementById('btnPDF').addEventListener('click', () => {
-      window.print();
-    });
+  <section class="q">
+    <h3>35) Identifique o problema (CSS)</h3>
+    <pre><code>body {
+font-family: Arial
+background-color: #f0f0f0;
+}
 
-    // Limpar respostas (rápido e prático em laboratório)
-    document.getElementById('btnLimpar').addEventListener('click', () => {
-      if (!confirm('Tem certeza que deseja limpar todas as respostas?')) return;
-      document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
-      document.querySelectorAll('textarea').forEach(el => el.value = '');
-      document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
+.header {
+color: white;
+padding: 20px
+text-align: center;
+}
+
+h1 {
+font-size: 28px;
+
+
+button{
+    background-color: #f0f0f0;
+}
+
+hover:button{
+    background-color: #ac1b1b;
+}
+
+p {
+margin: 10px;
+color: 
+}</code></pre>
+    <textarea name="q35" placeholder="Aponte os erros (sintaxe, herança) e corrija-os"></textarea>
+  </section>
+
+</main>
+
+<div class="controls no-print">
+  <button class="btn" type="button" id="btnLimpar">Limpar respostas</button>
+  <button class="btn primary" type="button" id="btnPDF">Baixar PDF</button>
+</div>
+
+<footer>
+  <p>"Um Jedi usa a Força para conhecimento e defesa, nunca para o ataque" ⠀⢀⣠⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣶⡾⠿⠿⠿⠿⢷⣶⣦⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⢰⣿⡟⠛⠛⠛⠻⠿⠿⢿⣶⣶⣦⣤⣤⣀⣀⡀⣀⣴⣾⡿⠟⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠉⠙⠻⢿⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⡀
+    ⠀⠻⣿⣦⡀⠀⠉⠓⠶⢦⣄⣀⠉⠉⠛⠛⠻⠿⠟⠋⠁⠀⠀⠀⣤⡀⠀⠀⢠⠀⠀⠀⣠⠀⠀⠀⠀⠈⠙⠻⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠟⠛⠛⢻⣿
+    ⠀⠀⠈⠻⣿⣦⠀⠀⠀⠀⠈⠙⠻⢷⣶⣤⡀⠀⠀⠀⠀⢀⣀⡀⠀⠙⢷⡀⠸⡇⠀⣰⠇⠀⢀⣀⣀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣤⣶⡶⠶⠶⠒⠂⠀⠀⣠⣾⠟
+    ⠀⠀⠀⠀⠈⢿⣷⡀⠀⠀⠀⠀⠀⠀⠈⢻⣿⡄⣠⣴⣿⣯⣭⣽⣷⣆⠀⠁⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⣦⡀⠀⣠⣾⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⣠⣾⡟⠁⠀
+    ⠀⠀⠀⠀⠀⠈⢻⣷⣄⠀⠀⠀⠀⠀⠀⠀⣿⡗⢻⣿⣧⣽⣿⣿⣿⣧⠀⠀⣀⣀⠀⢠⣿⣧⣼⣿⣿⣿⣿⠗⠰⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⡿⠋⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠙⢿⣶⣄⡀⠀⠀⠀⠀⠸⠃⠈⠻⣿⣿⣿⣿⣿⡿⠃⠾⣥⡬⠗⠸⣿⣿⣿⣿⣿⡿⠛⠀⢀⡟⠀⠀⠀⠀⠀⠀⣀⣠⣾⡿⠋⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠿⣷⣶⣤⣤⣄⣰⣄⠀⠀⠉⠉⠉⠁⠀⢀⣀⣠⣄⣀⡀⠀⠉⠉⠉⠀⠀⢀⣠⣾⣥⣤⣤⣤⣶⣶⡿⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⢻⣿⠛⢿⣷⣦⣤⣴⣶⣶⣦⣤⣤⣤⣤⣬⣥⡴⠶⠾⠿⠿⠿⠿⠛⢛⣿⣿⣿⣯⡉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣧⡀⠈⠉⠀⠈⠁⣾⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣿⠟⠉⣹⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣸⣿⣿⣦⣀⠀⠀⠀⢻⡀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣶⣿⠋⣿⠛⠃⠀⣈⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡿⢿⡀⠈⢹⡿⠶⣶⣼⡇⠀⢀⣀⣀⣤⣴⣾⠟⠋⣡⣿⡟⠀⢻⣶⠶⣿⣿⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣷⡈⢿⣦⣸⠇⢀⡿⠿⠿⡿⠿⠿⣿⠛⠋⠁⠀⣴⠟⣿⣧⡀⠈⢁⣰⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⢻⣦⣈⣽⣀⣾⠃⠀⢸⡇⠀⢸⡇⠀⢀⣠⡾⠋⢰⣿⣿⣿⣿⡿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⢿⣿⣿⡟⠛⠃⠀⠀⣾⠀⠀⢸⡇⠐⠿⠋⠀⠀⣿⢻⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠁⢀⡴⠋⠀⣿⠀⠀⢸⠇⠀⠀⠀⠀⠀⠁⢸⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⡿⠟⠋⠀⠀⠀⣿⠀⠀⣸⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣁⣀⠀⠀⠀⠀⣿⡀⠀⣿⠀⠀⠀⠀⠀⠀⢀⣈⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠟⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
+</footer>
+</div>
+
+<script>
+const data = document.getElementById('data');
+if (data && !data.value) {
+  const d = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  data.value = `${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()}`;
+}
+
+document.getElementById('btnPDF').addEventListener('click', () => {
+  window.print();
+});
+
+document.getElementById('btnLimpar').addEventListener('click', () => {
+  if (!confirm('Tem certeza que deseja limpar todas as respostas?')) return;
+  document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
+  document.querySelectorAll('textarea').forEach(el => el.value = '');
+  document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+document.querySelectorAll("textarea").forEach(area => {
+  area.addEventListener("input", function() {
+    this.style.height = "auto"; // reseta
+    this.style.height = (this.scrollHeight) + "px"; // ajusta ao conteúdo
+  });
+});
+
+</script>
 </body>
-</html>
+</html>  
