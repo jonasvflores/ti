@@ -58,26 +58,28 @@
     }
     button:hover {
       background: #005fa3;
+      text-align: ju;
     }
   </style>
 </head>
 <body>
   <h1>Exercícios de Correção (HTML + CSS)</h1>
   <p style="text-align:center; margin-bottom:40px;">
-    Corrija os erros no código para que o resultado apareça corretamente ao lado.
+    Corrija os erros nos códigos. O resultado vai aparecer ao lado.
   </p>
 
   <div id="exercicios"></div>
 
   <script>
     const exercicios = [
-      { enunciado: "1. Corrija a tag HTML.", codigo: `<htm>
+      { enunciado: "", codigo: `<htm>
   <body>
     <h1>Olá Mundo</h1>
   </body>
 </htm>` },
 
-      { enunciado: "2. Corrija o seletor CSS.", codigo: `<html>
+
+      { enunciado: "", codigo: `<html>
   <head>
     <style>
       destaque { color: red; }
@@ -88,7 +90,7 @@
   </body>
 </html>` },
 
-      { enunciado: "3. Corrija a propriedade CSS.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <head>
     <style>
       p { colr: blue; }
@@ -99,14 +101,14 @@
   </body>
 </html>` },
 
-      { enunciado: "4. Corrija o fechamento da tag.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <body>
     <p>Este é um parágrafo
     <p>Outro parágrafo</p>
   </body>
 </html>` },
 
-      { enunciado: "5. Corrija o seletor de ID.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <head>
     <style>
       titulo { color: green; }
@@ -117,23 +119,23 @@
   </body>
 </html>` },
 
-      { enunciado: "6. Corrija o link.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <body>
     <a hfer="https://www.google.com">Ir ao Google</a>
   </body>
 </html>` },
 
-      { enunciado: "7. Corrija a hierarquia do título.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <body>
     <p>Texto explicativo</p>
     <h1>Título</h1>
   </body>
 </html>` },
 
-      { enunciado: "8. Corrija o CSS de background-color.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <head>
     <style>
-      body { background-color: lightblue }
+      body { background-color lightblu }
       h1 { color: white }
     </style>
   </head>
@@ -142,7 +144,7 @@
   </body>
 </html>` },
 
-      { enunciado: "9. Corrija a lista.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <body>
     <ul>
       <li>Item 1
@@ -151,18 +153,22 @@
   </body>
 </html>` },
 
-      { enunciado: "10. Corrija a propriedade de alinhamento.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <head>
     <style>
       p { text-align: justfy; }
     </style>
   </head>
   <body>
-    <p>Texto justificado</p>
+    <p>Texto justificado - What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
   </body>
 </html>` },
 
-      { enunciado: "11. Corrija a borda.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <head>
     <style>
       div { border: 2 solid black; }
@@ -173,7 +179,7 @@
   </body>
 </html>` },
 
-      { enunciado: "12. Corrija o fechamento da tag style.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <head>
     <style>
       p { color: red; }
@@ -184,7 +190,7 @@
   </body>
 </html>` },
 
-      { enunciado: "13. Corrija o uso de class e id.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <head>
     <style>
       .meuTitulo { color: purple; }
@@ -195,7 +201,7 @@
   </body>
 </html>` },
 
-      { enunciado: "14. Corrija o display flex.", codigo: `<html>
+      { enunciado: "", codigo: `<html>
   <head>
     <style>
       div { dispaly: flex; }
@@ -209,7 +215,7 @@
   </body>
 </html>` },
 
-      { enunciado: "15. Corrija os erros múltiplos.", codigo: `<htlm>
+      { enunciado: "", codigo: `<htlm>
   <head>
     <style>
       p { font-sze: 18px color blue }
