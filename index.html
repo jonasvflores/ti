@@ -1,582 +1,248 @@
+
+<!-- Pois não? -->
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prova 1 – HTML & CSS</title>
-
+  <meta charset="UTF-8">
+  <title>Exercícios de Correção HTML + CSS</title>
   <style>
-    :root {
-      --ink: #0d0f12;
-      --muted: #444b57;
-      --border: #d6d8dd;
-      --bg: #ffffff;
-      --accent: #1f6feb;
-      --paper: #f7f8fa;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, "Helvetica Neue", sans-serif;
-      color: var(--ink);
-      background: var(--paper);
-      margin: 0;
-      line-height: 1.5;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
     }
-
-    .sheet {
-      max-width: 920px;
-      margin: 24px auto;
-      background: var(--bg);
-      box-shadow: 0 2px 20px rgba(0,0,0,.06);
-      border: 1px solid var(--border);
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
     }
-
-    header {
-      border-bottom: 1px solid var(--border);
-      padding: 20px 24px 16px 24px;
+    .exercicio {
+      margin-bottom: 40px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    header h1 {
-      margin: 0 0 6px 0;
-      font-size: 20px;
-      letter-spacing: .2px;
+    .exercicio p {
+      font-weight: bold;
+      margin-bottom: 10px;
     }
-    header p { margin: 4px 0; color: var(--muted); font-size: 14px; }
-
-    .meta {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 12px;
-      margin-top: 12px;
+    .editor {
+      display: flex;
+      gap: 20px;
     }
-    .meta label { font-size: 12px; color: var(--muted); display:block; }
-    .meta input { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px; }
-
-    .notice {
-      background: #fff7e6;
-      color: #7a4f00;
-      border: 1px solid #f1d6a6;
-      border-radius: 10px;
-      padding: 12px 14px;
-      margin: 16px 24px 0 24px;
+    textarea, iframe {
+      width: 50%;
+      height: 250px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: monospace;
       font-size: 14px;
-    }
-
-    main { padding: 8px 24px 24px 24px; }
-    .controls { display:flex; gap: 8px; justify-content: flex-end; padding: 12px 24px; border-top: 1px solid var(--border); background: #fafbfc; }
-    .btn {
-      border: 1px solid var(--border);
+      padding: 8px;
       background: #fff;
-      padding: 10px 14px;
-      border-radius: 10px;
+    }
+    iframe {
+      background: #fafafa;
+    }
+    button {
+      margin-top: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      background: #0078d7;
+      color: white;
+      font-size: 14px;
       cursor: pointer;
-      font-weight: 600;
+      transition: background 0.2s;
     }
-    .btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
-    .btn:active { transform: translateY(1px); }
-
-    h2.section-title { font-size: 16px; margin: 18px 0 8px 0; color: var(--muted); }
-
-    .q {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-      margin: 12px 0;
-      background: #fff;
-      page-break-inside: avoid;
-    }
-    .q h3 { margin: 0 0 8px 0; font-size: 15px; }
-    .q pre, .q code { background: #f3f4f6; border: 1px solid #e5e7eb; padding: 8px; display: block; border-radius: 8px; overflow-x: auto; }
-    .q .inline-code { display: inline; padding: 2px 6px; border-radius: 6px; }
-
-    textarea, input[type="text"], select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font-family: inherit;
-      resize: none;
-      min-height: 92px;
-      overflow: hidden;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-    }
-    .short { min-height: unset; height: 40px; }
-
-    .vf { display:flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .vf label { display:flex; gap:6px; align-items:center; }
-
-    .hint { color: var(--muted); font-size: 13px; margin: 8px 0; }
-
-    footer { padding: 16px 24px; color: var(--muted); font-size: 12px; }
-
-    @media print {
-      body { background: #fff; }
-      .sheet { box-shadow: none; border: none; margin: 0; }
-      .controls, .no-print { display: none !important; }
-      a[href]:after { content: " (" attr(href) ")"; font-size: 11px; }
-      .q { break-inside: avoid; page-break-inside: avoid; }
-      textarea, input[type="text"] {
-        white-space: pre-wrap;
-        overflow-wrap: anywhere;
-        word-break: break-word;
-      }
+    button:hover {
+      background: #005fa3;
     }
   </style>
 </head>
 <body>
-  <div class="sheet">
-    <header>
-      <h1>Prova 1 – HTML &amp; CSS - INDIVIDUAL</h1>
-      <p>Base: PDFs da pasta <strong>Public</strong>. Consulte somente o material durante a prova.</p>
-      <div class="meta">
-        <div>
-          <label for="aluno">Nome</label>
-          <input id="aluno" name="aluno" type="text" placeholder="" />
-        </div>
-        <div>
-          <label for="turma">Turma</label>
-          <input id="turma" name="turma" type="text" placeholder="Turma aqui" />
-        </div>
-        <div>
-          <label for="data">Data</label>
-          <input id="data" name="data" type="text" placeholder="dd/mm/aaaa" />
-        </div>
-      </div>
-    </header>
+  <h1>Exercícios de Correção (HTML + CSS)</h1>
+  <p style="text-align:center; margin-bottom:40px;">
+    Corrija os erros no código para que o resultado apareça corretamente ao lado.
+  </p>
 
-    <div class="notice">
-      <strong>Importante:</strong> Qualquer tentativa de cola irá anular a prova automaticamente.
-    </div>
+  <div id="exercicios"></div>
 
-    <main>
-      <h2 class="section-title">Questões</h2>
+  <script>
+    const exercicios = [
+      { enunciado: "1. Corrija a tag HTML.", codigo: `<htm>
+  <body>
+    <h1>Olá Mundo</h1>
+  </body>
+</htm>` },
 
+      { enunciado: "2. Corrija o seletor CSS.", codigo: `<html>
+  <head>
+    <style>
+      destaque { color: red; }
+    </style>
+  </head>
+  <body>
+    <p class="destaque">Texto importante</p>
+  </body>
+</html>` },
 
+      { enunciado: "3. Corrija a propriedade CSS.", codigo: `<html>
+  <head>
+    <style>
+      p { colr: blue; }
+    </style>
+  </head>
+  <body>
+    <p>Texto azul</p>
+  </body>
+</html>` },
 
-      <main>
-        <h2 class="section-title">Questões</h2>
-  
-        <section class="q">
-          <h3>1) Verdadeiro ou falso -- HTML é apenas uma linguagem de apresentação, sem significado semântico.</h3>
-          <div class="vf">
-            <label><input type="radio" name="q1" value="V"> V</label>
-            <label><input type="radio" name="q1" value="F"> F</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>2) Múltipla escolha -- Qual tag é mais adequada para marcar um bloco de navegação principal?</h3>
-          <div>
-            <label><input type="radio" name="q2" value="A"> A) &lt;div&gt;</label><br>
-            <label><input type="radio" name="q2" value="B"> B) &lt;nav&gt;</label><br>
-            <label><input type="radio" name="q2" value="C"> C) &lt;section&gt;</label><br>
-            <label><input type="radio" name="q2" value="D"> D) &lt;header&gt;</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>3) Complete -- O HTML organiza o conteúdo de forma <u>__________</u> e o CSS define a <u>__________</u>.</h3>
-          <input type="text" class="short" name="q3a" placeholder="Primeira lacuna" />
-          <input type="text" class="short" name="q3b" placeholder="Segunda lacuna" style="margin-top:8px" />
-        </section>
-  
-        <section class="q">
-          <h3>4) Interpretação -- Explique a diferença entre &lt;strong&gt; e &lt;b&gt; </h3>
-          <textarea name="q4" placeholder="1–3 linhas"></textarea>
-        </section>
-  
-        <section class="q">
-          <h3>5) Múltipla escolha -- Qual alternativa descreve melhor o Box Model?</h3>
-          <div>
-            <label><input type="radio" name="q5" value="A"> A) Conteúdo >> margin >> border >> padding</label><br>
-            <label><input type="radio" name="q5" value="B"> B) Padding >> conteúdo >> border >> margin</label><br>
-            <label><input type="radio" name="q5" value="C"> C) Conteúdo >> padding >> border >> margin</label><br>
-            <label><input type="radio" name="q5" value="D"> D) Border >> conteúdo >> padding >> margin</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>6) Identifique o problema (HTML)</h3>
-          <pre><code>&lt;html&gt;
-    &lt;head&gt;
-      &lt;title&gt;Página&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-      &lt;h2&gt;Olá&lt;/h3&gt;
-    &lt;/body&gt;
-  &lt;/html&gt;</code></pre>
-          <textarea name="q6" placeholder="O que está errado e como corrigir?"></textarea>
-        </section>
-  
-        <section class="q">
-          <h3>7) Verdadeiro ou falso -- O CSS é declarativo; ele define estados e não comandos sequenciais.</h3>
-          <div class="vf">
-            <label><input type="radio" name="q7" value="V"> V</label>
-            <label><input type="radio" name="q7" value="F"> F</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>8) Explique -- O que é o DOM? Dê 2 características que justificam chamá-lo de "árvore".</h3>
-          <textarea name="q8" placeholder="Fale de nós, filhos e hierarquia"></textarea>
-        </section>
-  
-        <section class="q">
-          <h3>9) Múltipla escolha -- Qual seletor tem maior especificidade?</h3>
-          <div>
-            <label><input type="radio" name="q9" value="A"> A) p</label><br>
-            <label><input type="radio" name="q9" value="B"> B) .card</label><br>
-            <label><input type="radio" name="q9" value="C"> C) #principal</label><br>
-            <label><input type="radio" name="q9" value="D"> D) [data-role="x"]</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>10) Identifique o problema (CSS)</h3>
-          <pre><code>h1 {
-    color: blue
-    font-size: 24px;
-  }</code></pre>
-          <textarea name="q10" placeholder="Aponte e corrija o erro"></textarea>
-        </section>
-  
-        <section class="q">
-          <h3>11) Interpretação -- Como fica visualmente no navegador o código abaixo?</h3>
-          <pre><code>&lt;ol&gt;
-    &lt;li&gt;Casa&lt;/li&gt;
-    &lt;li&gt;Carro&lt;/li&gt;
-    &lt;li&gt;Bicicleta&lt;/li&gt;
-  &lt;/ol&gt;</code></pre>
-          <textarea name="q11" placeholder="Descreva a aparência (marcadores, quebra de linha, etc.)"></textarea>
-        </section>
-  
-        <section class="q">
-          <h3>12) Verdadeiro ou falso -- Um mesmo id pode ser usado em mais de um elemento na mesma página.</h3>
-          <div class="vf">
-            <label><input type="radio" name="q12" value="V"> V</label>
-            <label><input type="radio" name="q12" value="F"> F</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>13) Múltipla escolha -- Qual etiqueta é mais adequada para marcar o rodapé de uma página?</h3>
-          <div>
-            <label><input type="radio" name="q13" value="A"> A) &lt;footer&gt;</label><br>
-            <label><input type="radio" name="q13" value="B"> B) &lt;aside&gt;</label><br>
-            <label><input type="radio" name="q13" value="C"> C) &lt;nav&gt;</label><br>
-            <label><input type="radio" name="q13" value="D"> D) &lt;header&gt;</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>14) Complete -- No CSS a unidade <strong>px</strong> representa __________.</h3>
-          <input type="text" class="short" name="q14" />
-        </section>
-  
-        <section class="q">
-          <h3>15) Explique -- Por que usar &lt;nav&gt;, &lt;header&gt; e &lt;footer&gt; melhora a acessibilidade?</h3>
-          <textarea name="q15" placeholder="1–3 linhas"></textarea>
-        </section>
-  
-        <section class="q">
-          <h3>16) Múltipla escolha -- Qual propriedade é usada para remover a bolinha de lista em &lt;ul&gt;?</h3>
-          <div>
-            <label><input type="radio" name="q16" value="A"> A) list-style: none;</label><br>
-            <label><input type="radio" name="q16" value="B"> B) display: none;</label><br>
-            <label><input type="radio" name="q16" value="C"> C) list-type: none;</label><br>
-            <label><input type="radio" name="q16" value="D"> D) marker: none;</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>17) Identifique o problema (link)</h3>
-          <pre><code>&lt;a&gt;https://minhapagina.com&lt;/a&gt;</code></pre>
-          <textarea name="q17" placeholder="O que falta para o link funcionar corretamente?"></textarea>
-        </section>
-  
-        <section class="q">
-          <h3>18) Verdadeiro ou falso -- &lt;em&gt; indica ênfase semântica e &lt;i&gt; apenas itálico visual.</h3>
-          <div class="vf">
-            <label><input type="radio" name="q18" value="V"> V</label>
-            <label><input type="radio" name="q18" value="F"> F</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>19) Múltipla escolha -- Em termos de desempenho, qual prática ajuda a reduzir o tamanho do DOM?</h3>
-          <div>
-            <label><input type="radio" name="q19" value="A"> A) Criar muitos elementos aninhados para controle detalhado</label><br>
-            <label><input type="radio" name="q19" value="B"> B) Reutilizar estruturas e evitar nós desnecessários</label><br>
-            <label><input type="radio" name="q19" value="C"> C) Usar muitos IDs únicos</label><br>
-            <label><input type="radio" name="q19" value="D"> D) Incluir CSS inline em todos os elementos</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>20) Explique -- O que é "cascata" no CSS? Cite pelo menos um critério que influencia qual regra é aplicada.</h3>
-          <textarea name="q20" placeholder="Ex.: especificidade, ordem de leitura, herança"></textarea>
-        </section>
-  
-        <section class="q">
-          <h3>21) Identifique o problema (CSS)</h3>
-          <pre><code>.destaque {
-    background-color yellow;
-    padding: 10px;
-  }</code></pre>
-          <textarea name="q21" placeholder="Aponte e corrija o erro"></textarea>
-        </section>
-  
-        <section class="q">
-          <h3>22) Múltipla escolha -- Qual é um exemplo de <em>decomposição</em> ao construir um site de notícias?</h3>
-          <div>
-            <label><input type="radio" name="q22" value="A"> A) Escrever todo o HTML de uma vez sem planejar</label><br>
-            <label><input type="radio" name="q22" value="B"> B) Separar em cabeçalho, lista de notícias, artigos e rodapé</label><br>
-            <label><input type="radio" name="q22" value="C"> C) Colocar todo o CSS em cada elemento individual</label><br>
-            <label><input type="radio" name="q22" value="D"> D) Ignorar padrões e repetir código</label>
-          </div>
-          <div class="hint">(base: Desenvolvimento Web sob o pensamento computacional)</div>
-        </section>
-  
-        <section class="q">
-          <h3>23) Interpretação — Explique como &lt;dl&gt;, &lt;dt&gt; e &lt;dd&gt; são usados e qual  a diferença para  &lt;ul&gt;.</h3>
-          <textarea name="q23" placeholder="Dê um exemplo prático"></textarea>
-        </section>
-  
-        <section class="q">
-          <h3>24) Verdadeiro ou falso -- O seletor universal (*) pode zerar margin e padding de todos os elementos da página.</h3>
-          <div class="vf">
-            <label><input type="radio" name="q24" value="V"> V</label>
-            <label><input type="radio" name="q24" value="F"> F</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>25) Múltipla escolha -- Qual alternativa representa corretamente a prioridade (especificidade) do CSS do maior para o menor?</h3>
-          <div>
-            <label><input type="radio" name="q25" value="A"> A) Classe &gt; ID &gt; Inline &gt; Tag</label><br>
-            <label><input type="radio" name="q25" value="B"> B) Inline &gt; ID &gt; Classe &gt; Tag</label><br>
-            <label><input type="radio" name="q25" value="C"> C) ID &gt; Inline &gt; Classe &gt; Tag</label><br>
-            <label><input type="radio" name="q25" value="D"> D) Tag &gt; Classe &gt; ID &gt; Inline</label>
-          </div>
-        </section>
-  
-        <section class="q">
-          <h3>26) Explique -- Por que a semântica é importante para SEO e leitores de tela?</h3>
-          <textarea name="q26" placeholder="Ex.: &lt;h1&gt; para título principal, &lt;nav&gt; para navegação"></textarea>
-        </section>
-  
+      { enunciado: "4. Corrija o fechamento da tag.", codigo: `<html>
+  <body>
+    <p>Este é um parágrafo
+    <p>Outro parágrafo</p>
+  </body>
+</html>` },
 
-      <section class="q">
-        <h3>27) Identifique o problema</h3>
-        <pre><code>&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Exemplo&lt;/head&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Título Principal
-    &lt;p&gt;Parágrafo 1&lt;/p&gt;
-    &lt;section&gt;
-      &lt;div&gt;
-        &lt;h2&gt;Subtítulo&lt;/h3&gt;
-        &lt;p&gt;Texto em parágrafo e tal
-      &lt;/div&gt;
-    &lt;/article&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-        <textarea name="q27" placeholder="Liste todos os erros e corrija"></textarea>
-      </section>
+      { enunciado: "5. Corrija o seletor de ID.", codigo: `<html>
+  <head>
+    <style>
+      titulo { color: green; }
+    </style>
+  </head>
+  <body>
+    <h1 id="titulo">Meu Título</h1>
+  </body>
+</html>` },
 
-      <section class="q">
-        <h3>28) Identifique o problema -- Analise o trecho HTML abaixo e descreva a árvore DOM resultante (pais/filhos/irmãos).</h3>
-        <pre><code>&lt;body&gt;
-  &lt;main&gt;
-    &lt;section&gt;
-      &lt;h2&gt;Seção&lt;/h2&gt;
-      &lt;p&gt;Texto&lt;/p&gt;
-    &lt;/section&gt;
-    &lt;aside&gt;&lt;p&gt;Lateral&lt;/p&gt;&lt;/aside&gt;
-  &lt;/main&gt;
-&lt;/body&gt;</code></pre>
-        <textarea name="q28" placeholder="Descreva nós e relacionamentos"></textarea>
-      </section>
-      
-<section class="q">
-    <h3>29) Identifique o problema </h3>
-    <pre><code>body {
-font-family Arial, sans-serif;
-background-color #f5f5f5
-}
+      { enunciado: "6. Corrija o link.", codigo: `<html>
+  <body>
+    <a hfer="https://www.google.com">Ir ao Google</a>
+  </body>
+</html>` },
 
-.container {
-max-width 1200px;
-margin auto
-padding 20px
-color blue
+      { enunciado: "7. Corrija a hierarquia do título.", codigo: `<html>
+  <body>
+    <p>Texto explicativo</p>
+    <h1>Título</h1>
+  </body>
+</html>` },
 
+      { enunciado: "8. Corrija o CSS de background-color.", codigo: `<html>
+  <head>
+    <style>
+      body { background-color: lightblue }
+      h1 { color: white }
+    </style>
+  </head>
+  <body>
+    <h1>Título</h1>
+  </body>
+</html>` },
 
-h1 {
-font-size: 32;
-color: #333
-text-align center;
-}</code></pre>
-    <textarea name="q29" placeholder="Liste todos os erros e corrija"></textarea>
-  </section>
-  
-  
-  <section class="q">
-    <h3>30) Explique -- O que significa dizer que a Web é um grafo? Relacione com o elemento &lt;a&gt;.</h3>
-    <textarea name="q30" placeholder="Fale de nós, arestas e hyperlinks"></textarea>
-  </section>
+      { enunciado: "9. Corrija a lista.", codigo: `<html>
+  <body>
+    <ul>
+      <li>Item 1
+      <li>Item 2</li>
+    </ul>
+  </body>
+</html>` },
 
-  <section class="q">
-    <h3>31) Interpretação / Conflito de estilos-- Qual cor será aplicada e por quê?</h3>
-    <pre><code>p { color: green; }
-.highlight { color: blue; }
-#intro { color: red; }</code></pre>
-    <pre><code>&lt;p id="intro" class="highlight"&gt;Exemplo&lt;/p&gt;</code></pre>
-    <textarea name="q31" placeholder="Explique usando especificidade e ordem"></textarea>
-  </section>
+      { enunciado: "10. Corrija a propriedade de alinhamento.", codigo: `<html>
+  <head>
+    <style>
+      p { text-align: justfy; }
+    </style>
+  </head>
+  <body>
+    <p>Texto justificado</p>
+  </body>
+</html>` },
 
-  <section class="q">
-    <h3>32) Múltipla escolha -- Qual é uma boa aplicação de <em>abstração</em> ao criar componentes em HTML/CSS?</h3>
+      { enunciado: "11. Corrija a borda.", codigo: `<html>
+  <head>
+    <style>
+      div { border: 2 solid black; }
+    </style>
+  </head>
+  <body>
+    <div>Caixa com borda</div>
+  </body>
+</html>` },
+
+      { enunciado: "12. Corrija o fechamento da tag style.", codigo: `<html>
+  <head>
+    <style>
+      p { color: red; }
+    </styl>
+  </head>
+  <body>
+    <p>Texto vermelho</p>
+  </body>
+</html>` },
+
+      { enunciado: "13. Corrija o uso de class e id.", codigo: `<html>
+  <head>
+    <style>
+      .meuTitulo { color: purple; }
+    </style>
+  </head>
+  <body>
+    <h1 id="meuTitulo">Título</h1>
+  </body>
+</html>` },
+
+      { enunciado: "14. Corrija o display flex.", codigo: `<html>
+  <head>
+    <style>
+      div { dispaly: flex; }
+    </style>
+  </head>
+  <body>
     <div>
-      <label><input type="radio" name="q32" value="A"> A) Repetir o mesmo HTML para cada card com pequenas mudanças</label><br>
-      <label><input type="radio" name="q32" value="B"> B) Criar uma estrutura genérica (classe .card) e reutilizá-la com conteúdos diferentes</label><br>
-      <label><input type="radio" name="q32" value="C"> C) Colocar estilos distintos inline em cada card</label><br>
-      <label><input type="radio" name="q32" value="D"> D) Hard-codear textos e estruturas no HTML sem classes</label>
+      <p>Item A</p>
+      <p>Item B</p>
     </div>
-    <div class="hint">(base: Desenvolvimento Web sob o pensamento computacional)</div>
-  </section>
+  </body>
+</html>` },
 
-  <section class="q">
-    <h3>33) Síntese -- Dado o trecho abaixo, descreva: (a) árvore DOM simplificada, (b) papel semântico de cada tag, (c) qual seletor teria prioridade para estilizar o título &lt;h1&gt;.</h3>
-    <pre><code>&lt;main&gt;
-&lt;article class="post destaque"&gt;
-&lt;header&gt;
-  &lt;h1 id="titulo"&gt;Engenharia do Front-end&lt;/h1&gt;
-  &lt;p class="meta"&gt;Autor — 2025&lt;/p&gt;
-&lt;/header&gt;
-&lt;section&gt;
-  &lt;p&gt;Conteúdo principal...&lt;/p&gt;
-&lt;/section&gt;
-&lt;/article&gt;
-&lt;/main&gt;</code></pre>
-    <textarea name="q33" placeholder="Fale de pais/filhos, semântica e ordem de especificidade"></textarea>
-  </section>
+      { enunciado: "15. Corrija os erros múltiplos.", codigo: `<htlm>
+  <head>
+    <style>
+      p { font-sze: 18px color blue }
+    </style>
+  </head>
+  <body>
+    <h1>Exercício final</h2>
+    <p>Texto exemplo</p>
+  </body>
+</htlm>` }
+    ];
 
-  <section class="q">
-    <h3>34) Identifique o problema (HTML)</h3>
-    <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Site de Notícias&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div&gt;
-  &lt;h1&gt;Notícias Principais&lt;/h1&gt;
-  &lt;div&gt;Notícia 1&lt;/div&gt;
-  &lt;p&gt;Descrição da notícia.&lt;/p&gt;
-  &lt;div&gt;Notícia 2&lt;/div&gt;
-  &lt;p&gt;Outra descrição.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div&gt;Rodapé do site&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-    <textarea name="q34" placeholder="O que está errado (considere semântica e estrutura) e como corrigir?"></textarea>
-    <div class="hint">(base: Por dentro do HTML e CSS - semântica e estrutura)</div>
-  </section>
+    const container = document.getElementById("exercicios");
 
-  <section class="q">
-    <h3>35) Identifique o problema (CSS)</h3>
-    <pre><code>body {
-font-family: Arial
-background-color: #f0f0f0;
-}
+    exercicios.forEach((ex, i) => {
+      const div = document.createElement("div");
+      div.className = "exercicio";
+      div.innerHTML = `
+        <p>Exercício ${i + 1}: ${ex.enunciado}</p>
+        <div class="editor">
+          <textarea id="code${i}">${ex.codigo}</textarea>
+          <iframe id="preview${i}"></iframe>
+        </div>
+        <button onclick="runCode(${i})">Rodar</button>
+      `;
+      container.appendChild(div);
+    });
 
-.header {
-color: white;
-padding: 20px
-text-align: center;
-}
-
-h1 {
-font-size: 28px;
-
-
-button{
-    background-color: #f0f0f0;
-}
-
-hover:button{
-    background-color: #ac1b1b;
-}
-
-p {
-margin: 10px;
-color: 
-}</code></pre>
-    <textarea name="q35" placeholder="Aponte os erros (sintaxe, herança) e corrija-os"></textarea>
-  </section>
-
-</main>
-
-<div class="controls no-print">
-  <button class="btn" type="button" id="btnLimpar">Limpar respostas</button>
-  <button class="btn primary" type="button" id="btnPDF">Baixar PDF</button>
-</div>
-
-<footer>
-  <p>"Um Jedi usa a Força para conhecimento e defesa, nunca para o ataque" ⠀⢀⣠⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣶⡾⠿⠿⠿⠿⢷⣶⣦⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⢰⣿⡟⠛⠛⠛⠻⠿⠿⢿⣶⣶⣦⣤⣤⣀⣀⡀⣀⣴⣾⡿⠟⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠉⠙⠻⢿⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⡀
-    ⠀⠻⣿⣦⡀⠀⠉⠓⠶⢦⣄⣀⠉⠉⠛⠛⠻⠿⠟⠋⠁⠀⠀⠀⣤⡀⠀⠀⢠⠀⠀⠀⣠⠀⠀⠀⠀⠈⠙⠻⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠟⠛⠛⢻⣿
-    ⠀⠀⠈⠻⣿⣦⠀⠀⠀⠀⠈⠙⠻⢷⣶⣤⡀⠀⠀⠀⠀⢀⣀⡀⠀⠙⢷⡀⠸⡇⠀⣰⠇⠀⢀⣀⣀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣤⣶⡶⠶⠶⠒⠂⠀⠀⣠⣾⠟
-    ⠀⠀⠀⠀⠈⢿⣷⡀⠀⠀⠀⠀⠀⠀⠈⢻⣿⡄⣠⣴⣿⣯⣭⣽⣷⣆⠀⠁⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⣦⡀⠀⣠⣾⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⣠⣾⡟⠁⠀
-    ⠀⠀⠀⠀⠀⠈⢻⣷⣄⠀⠀⠀⠀⠀⠀⠀⣿⡗⢻⣿⣧⣽⣿⣿⣿⣧⠀⠀⣀⣀⠀⢠⣿⣧⣼⣿⣿⣿⣿⠗⠰⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⡿⠋⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠙⢿⣶⣄⡀⠀⠀⠀⠀⠸⠃⠈⠻⣿⣿⣿⣿⣿⡿⠃⠾⣥⡬⠗⠸⣿⣿⣿⣿⣿⡿⠛⠀⢀⡟⠀⠀⠀⠀⠀⠀⣀⣠⣾⡿⠋⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠿⣷⣶⣤⣤⣄⣰⣄⠀⠀⠉⠉⠉⠁⠀⢀⣀⣠⣄⣀⡀⠀⠉⠉⠉⠀⠀⢀⣠⣾⣥⣤⣤⣤⣶⣶⡿⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⢻⣿⠛⢿⣷⣦⣤⣴⣶⣶⣦⣤⣤⣤⣤⣬⣥⡴⠶⠾⠿⠿⠿⠿⠛⢛⣿⣿⣿⣯⡉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣧⡀⠈⠉⠀⠈⠁⣾⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣿⠟⠉⣹⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣸⣿⣿⣦⣀⠀⠀⠀⢻⡀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣶⣿⠋⣿⠛⠃⠀⣈⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡿⢿⡀⠈⢹⡿⠶⣶⣼⡇⠀⢀⣀⣀⣤⣴⣾⠟⠋⣡⣿⡟⠀⢻⣶⠶⣿⣿⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣷⡈⢿⣦⣸⠇⢀⡿⠿⠿⡿⠿⠿⣿⠛⠋⠁⠀⣴⠟⣿⣧⡀⠈⢁⣰⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⢻⣦⣈⣽⣀⣾⠃⠀⢸⡇⠀⢸⡇⠀⢀⣠⡾⠋⢰⣿⣿⣿⣿⡿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⢿⣿⣿⡟⠛⠃⠀⠀⣾⠀⠀⢸⡇⠐⠿⠋⠀⠀⣿⢻⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠁⢀⡴⠋⠀⣿⠀⠀⢸⠇⠀⠀⠀⠀⠀⠁⢸⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⡿⠟⠋⠀⠀⠀⣿⠀⠀⣸⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣁⣀⠀⠀⠀⠀⣿⡀⠀⣿⠀⠀⠀⠀⠀⠀⢀⣈⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠟⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
-</footer>
-</div>
-
-<script>
-const data = document.getElementById('data');
-if (data && !data.value) {
-  const d = new Date();
-  const pad = n => String(n).padStart(2, '0');
-  data.value = `${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()}`;
-}
-
-document.getElementById('btnPDF').addEventListener('click', () => {
-  window.print();
-});
-
-document.getElementById('btnLimpar').addEventListener('click', () => {
-  if (!confirm('Tem certeza que deseja limpar todas as respostas?')) return;
-  document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
-  document.querySelectorAll('textarea').forEach(el => el.value = '');
-  document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-document.querySelectorAll("textarea").forEach(area => {
-  area.addEventListener("input", function() {
-    this.style.height = "auto"; 
-    this.style.height = (this.scrollHeight) + "px"; 
-  });
-});
-
-</script>
+    window.runCode = function (i) {
+      const code = document.getElementById("code" + i).value;
+      const iframe = document.getElementById("preview" + i);
+      iframe.srcdoc = code;
+    }
+  </script>
 </body>
-</html>  
+</html>
