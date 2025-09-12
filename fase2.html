@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercícios de Correção HTML + CSS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .exercicio {
+      margin-bottom: 40px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .exercicio p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .editor {
+      display: flex;
+      gap: 20px;
+    }
+    textarea, iframe {
+      width: 50%;
+      height: 350px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 14px;
+      padding: 8px;
+      background: #fff;
+    }
+    iframe {
+      background: #fafafa;
+    }
+    button {
+      margin-top: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      background: #0078d7;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Exercícios de Correção (HTML + CSS)</h1>
+  <p style="text-align:center; margin-bottom:40px;">
+    Corrija os erros no código para que o resultado apareça corretamente ao lado.
+  </p>
+
+  <div id="exercicios"></div>
+
+  <script>
+    const exercicios = [
+      { enunciado: "Exercício 1 – Corrija as tags abertas e fechadas.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF8">
+  <title>Loja Virtual<title>
+  <style>
+    body { background colr: #f0f0f0; font-famly: Arial }
+    header { background: lightblue padding 20px; text-align: center; }
+    h1 { colr: navy font-size 24px }
+    nav ul { list-style: none; margin 0 padding 0 }
+    nav li { display inline; margin-right: 15px }
+    nav a { color: darkblue text-decoration none; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Minha Loja</h2>
+    <nav>
+      <ul>
+        <li><a hrfe="index.html">Home</a></li>
+        <li><a href="produtos.html">Produtos</li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Promoções</h3>
+      <p>Confira nossos <stong>descontos</stong> especiais<p>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Loja Virtual<p>
+  </footer>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 2 – Corrija os atributos incorretos.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda Cultural</title>
+  <style>
+    body { background: #fff font-size 16px }
+    h1 { text-algn center; color darkred; }
+    .evento { border 1px solid #333 margin:10px padding:10px }
+    .data { font-weigth: bold; color: #666 }
+    a { color blue text-decoration none }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Agenda da Cidade<h1>
+  </header>
+  <main>
+    <article class="evento">
+      <h2>Show de Rock</h2>
+      <p class="data">12/09/2025</span>
+      <p>Local: Praça Central</p>
+      <a hfer="detalhes.html">Saiba mais</a>
+    </article>
+    <article class="evento">
+      <h2>Exposição de Arte</h2>
+      <p class="data">20/09/2025<p>
+      <p>Local: Museu Municipal</p>
+      <a href="detalhes.html">Saiba mais</p>
+    </article>
+  </main>
+  <footer>
+    <p>Agenda Cultural - Todos os direitos reservados</footer>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 3 – Corrija o CSS.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Portal da Escola</title>
+  <style>
+    body { font-family: Arial; background-color lightgrey }
+    header { background-color: #444; colr: white; padding: 10px }
+    h1 { font-size:28px text-align: center }
+    section { margn: 20px padding: 10px border 1px solid #000 }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Portal da Escola</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Notícias</h2>
+      <p>Bem-vindo ao portal da escola<p>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Escola Modelo</p>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 4 – Corrija os erros no blog de viagens.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Blog de Viagens</title>
+  <style>
+    body { font-family Arial; margin 0; padding 0; }
+    header { background orange; padding 15px text-align center }
+    h1 { colr: white; }
+    article { margin: 20px padding:15px border 1px solid #ddd }
+    img { widht 200px; heigt: auto }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Minhas Viagens<h1>
+  </header>
+  <main>
+    <article>
+      <h2>Paris</h2>
+      <img src="paris.jpg" alt="Paris">
+      <p>Uma cidade incrível<p>
+    </article>
+    <article>
+      <h2>Roma</h2>
+      <img src="roma.jpg">
+      <p>História e cultura</p>
+    </article>
+  </main>
+  <footer>
+    <p>Blog de Viagens 2025</p>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 5 – Corrija o CSS.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo CSS</title>
+  <style>
+    body 
+      background: lightblue
+      font-family Arial
+    }
+    h1 {
+      colr navy
+      font-size 24px
+      text-align center
+    h2 {
+      color: darkred
+      font-weight bold
+  </style>
+</head>
+<body>
+  <h1>Exemplo de Título</h1>
+  <h2>Subtítulo</h2>
+  <p>Corrija os erros de CSS nesta página.</p>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 6 – Corrija a hierarquia das tags.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Site de Notícias</title>
+  <style>
+    body { font-family: Verdana; background lightgray }
+    h1 { colr: blue; }
+  </style>
+</head>
+<body>
+  <p>Bem-vindo!</p>
+  <h1>Últimas Notícias</h2>
+  <section>
+    <article>
+      <h2>Evento</h2>
+      <p>Hoje acontece um evento importante
+    </article>
+  </section>
+  <footer>
+    <p>Rodapé do site</p>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 7 – Corrija os links e atributos.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Links Importantes</title>
+  <style>
+    a { color red text-decoration none }
+  </style>
+</head>
+<body>
+  <h1>Links</h1>
+  <ul>
+    <li><a hrfe="https://google.com">Google</a></li>
+    <li><a href="https://yahoo.com" Yahoo</a></li>
+    <li><a href=https://bing.com>Bing</a></li>
+  </ul>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 8 – Corrija o CSS.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Blog Pessoal</title>
+  <style>
+    body { background white font-family Arial }
+    header { background lightblue padding 20px }
+    h1 { colr: navy font-size 28px }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Meu Blog<h1>
+  </header>
+  <main>
+    <article>
+      <h2>Post 1</h2>
+      <p>Conteúdo aqui</p>
+    </article>
+  </main>
+  <footer>
+    <p>Rodapé</p>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 9 – Corrija os elementos de lista.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Compras</title>
+  <style>
+    ul { list-stle none; margin 0; padding 0 }
+    li { padding 5px border-bottom 1px solid #333 }
+  </style>
+</head>
+<body>
+  <h1>Compras</h1>
+  <ul>
+    <li>Arroz
+    <li>Feijão</li>
+    <li>Macarrão<li>
+  </ul>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 10 – Corrija o CSS.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Página Simples</title>
+  <style>
+    body { backgrund #fafafa; font-famly: sans-serif }
+    h1 { color navy text-align center }
+    p { margn 20px }
+  </style>
+</head>
+<body>
+  <h1>Página de Exemplo</h1>
+  <p>Um texto simples</p>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 11 – Corrija as tags incorretas.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Página de Contato</title>
+  <style>
+    body { background: #eee; }
+    h1 { color darkgreen }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Contato</h2>
+  </header>
+  <main>
+    <p>Entre em contato conosco<p>
+  </main>
+  <footer>
+    <p>Rodapé</footer>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 12 – Corrija o CSS.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Galeria</title>
+  <style>
+    body { background lightgray font-family Verdana }
+    img { widht 150px margin 10px }
+  </style>
+</head>
+<body>
+  <h1>Galeria de Imagens</h1>
+  <img src="img1.jpg" alt="Imagem 1">
+  <img src="img2.jpg" alt="Imagem 2">
+</body>
+</html>` },
+
+      { enunciado: "Exercício 13 – Corrija os títulos e parágrafos.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Artigo</title>
+  <style>
+    h1 { colr navy }
+    p { font-sze 16px }
+  </style>
+</head>
+<body>
+  <h1>Artigo<h1>
+  <p>Primeiro parágrafo
+  <p>Segundo parágrafo</p>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 14 – Corrija os erros de navegação.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Menu</title>
+  <style>
+    nav ul { list-style none; }
+    nav li { display inline margin-right 15px }
+    a { color blue text-decoration none }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Menu Principal</h1>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</li>
+        <li><a href="sobre.html">Sobre</a>
+        <li><a hrfe="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 15 – Corrija o CSS.", codigo: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Página Final</title>
+  <style>
+    body { backgrond white; font-famly Arial }
+    h1 { color red font-size 32px text-align center }
+    p { margn 15px colr #333 }
+  </style>
+</head>
+<body>
+  <h1>Exercício Final</h1>
+  <p>Este é o último exercício da lista.</p>
+</body>
+</html>` }
+    ];
+
+    const container = document.getElementById("exercicios");
+
+    exercicios.forEach((ex, i) => {
+      const div = document.createElement("div");
+      div.className = "exercicio";
+      div.innerHTML = `
+        <p>${ex.enunciado}</p>
+        <div class="editor">
+          <textarea id="code${i}">${ex.codigo}</textarea>
+          <iframe id="preview${i}"></iframe>
+        </div>
+        <button onclick="runCode(${i})">Rodar</button>
+      `;
+      container.appendChild(div);
+    });
+
+    window.runCode = function (i) {
+      const code = document.getElementById("code" + i).value;
+      const iframe = document.getElementById("preview" + i);
+      iframe.srcdoc = code;
+    }
+  </script>
+</body>
+</html>
