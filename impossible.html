@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercícios de Correção HTML + CSS - Fase 4</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .exercicio {
+      margin-bottom: 40px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .exercicio p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .editor {
+      display: flex;
+      gap: 20px;
+    }
+    textarea, iframe {
+      width: 50%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 14px;
+      padding: 8px;
+      background: #fff;
+    }
+    textarea {
+      height: auto;
+      min-height: 250px;
+      max-height: 600px;
+      overflow-y: auto;
+      resize: vertical;
+      line-height: 1.4;
+    }
+    iframe {
+      height: 400px;
+      background: #fafafa;
+    }
+    button {
+      margin-top: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      background: #0078d7;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Exercícios de Correção (HTML + CSS) - Fase 4</h1>
+  <p style="text-align:center; margin-bottom:40px;">
+    Esta fase é mais avançada com códigos maiores. Corrija erros em seletores, IDs, classes, pseudo-classes e propriedades CSS para que os estilos apliquem corretamente. Para modificações, altere conforme instruído. O resultado aparece ao lado.
+  </p>
+
+  <div id="exercicios"></div>
+
+  <script>
+    const exercicios = [
+      { enunciado: "Exercício 1 – Corrija os seletores de classe e ID em uma página de login, garantindo que os estilos de foco e hover funcionem.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; margin: 0; padding: 20px; }
+    .form-login { max-width: 300px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    #usuario-input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radiu: 4px; }
+    #senha-input:focus { border-color: blue; outline: none; }
+    .btn-login { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+    .btn-login:hover { background: #0056b3; }
+    .erro { color: red; display: none; }
+  </style>
+</head>
+<body>
+  <div class="form-login">
+    <h2>Login</h2>
+    <form>
+      <input type="text" id="usuario-input" placeholder="Usuário">
+      <input type="password" id="senha-input" placeholder="Senha">
+      <div class="erro" id="erro-msg">Erro de login</div>
+      <button type="submit" class="btn-login">Entrar</button>
+    </form>
+  </div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 2 – Corrija IDs duplicados em uma galeria de imagens e ajuste os seletores CSS para classes múltiplas.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Galeria</title>
+  <style>
+    .gallery { display: flex; flex-wrap: wrap; justify-content: center; }
+    .gallery img { width: 200px; height: 150px; margin: 10px; border-radius: 8px; transition: transform 0.3s; }
+    .gallery img:hover { transform: scale(1.05); }
+    #img1 { border: 3px solid blue; }
+    #img2 { border: 3px solid green; }
+  </style>
+</head>
+<body>
+  <h1>Galeria de Imagens</h1>
+  <div class="gallery">
+    <img src="img1.jpg" alt="Imagem 1" id="img1" class="imagem destaque">
+    <img src="img2.jpg" alt="Imagem 2" id="img1" class="imagem destaque">
+    <img src="img3.jpg" alt="Imagem 3" id="img2" class="imagem">
+  </div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 3 – Corrija erros de digitação em propriedades CSS e matching de classes em um menu de navegação.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu</title>
+  <style>
+    nav { background: #333; padding: 10px; }
+    .menu { list-style: none; display: flex; margin: 0; padding: 0; }
+    .menu li { margin-right: 20px; }
+    .menu a { color: white; text-decoraton: none; padding: 10px; border-radius: 4px; transition: background 0.3s; }
+    .menu a:hover { background: #555; }
+    .menu .active { background: #007bff; }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="menu">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#" class="ativ">Sobre</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul>
+  </nav>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 4 – Corrija seletores descendentes e pseudo-classes em uma lista de tarefas.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarefas</title>
+  <style>
+    .todo-list { max-width: 400px; margin: 20px auto; }
+    .todo-item { padding: 10px; border: 1px solid #ddd; margin-bottom: 5px; display: flex; align-items: center; }
+    .todo-item input[type="checkbox"] { margin-right: 10px; }
+    .todo-item.completed { text-decoration: line-through; opacity: 0.6; }
+    .todo-item:hover { background: #f9f9f9; }
+    button.delete { background: red; color: white; border: none; padding: 5px 10px; cursor: pointer; margin-left: auto; }
+  </style>
+</head>
+<body>
+  <div class="todo-list">
+    <h2>Lista de Tarefas</h2>
+    <div class="todo-item">
+      <input type="checkbox"> Tarefa 1
+      <button class="delete">X</button>
+    </div>
+    <div class="todo-item completed">
+      <input type="checkbox" checked> Tarefa 2
+      <button class="delete">X</button>
+    </div>
+  </div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 5 – Corrija atributos sem aspas e seletores de ID em um formulário de cadastro.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro</title>
+  <style>
+    form { max-width: 500px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; }
+    input[type="text"], input[type="email"] { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
+    #submit-btn { background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; }
+    #submit-btn:hover { background: #218838; }
+    .required { color: red; }
+  </style>
+</head>
+<body>
+  <form>
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name=nome required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name=email required class="required">
+    <button type="submit" id="submit-btn">Cadastrar</button>
+  </form>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 6 – Corrija seletores de tag e classes em uma seção de artigos.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Artigos</title>
+  <style>
+    .article { margin-bottom: 30px; padding: 20px; border: 1px solid #eee; border-radius: 8px; }
+    h2 { color: #333; }
+    .article p { line-height: 1.6; }
+    .article .featured { background: #fff3cd; border-left: 4px solid #ffc107; }
+    .article footer { font-size: 0.9em; color: #666; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <article class="article featured">
+    <h2>Título do Artigo 1</h2>
+    <p>Conteúdo do artigo...</p>
+    <footer>Por Autor 1 - 23/09/2025</footer>
+  </article>
+  <article class="article">
+    <h2>Título do Artigo 2</h2>
+    <p>Outro conteúdo...</p>
+    <footer>Por Autor 2 - 23/09/2025</footer>
+  </article>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 7 – Corrija erros em pseudo-classes :hover e :focus em botões de uma toolbar.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Toolbar</title>
+  <style>
+    .toolbar { display: flex; background: #f8f9fa; padding: 10px; border-bottom: 1px solid #dee2e6; }
+    .btn-tool { padding: 8px 12px; margin-right: 5px; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 4px; }
+    .btn-tool:hover { background: #e9ecef; }
+    .btn-tool:focus { outline: 2px solid #007bff; outline-offset: 2px; }
+    .btn-tool.active { background: #007bff; color: white; }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button class="btn-tool active">Salvar</button>
+    <button class="btn-tool">Editar</button>
+    <button class="btn-tool">Excluir</button>
+  </div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 8 – Corrija seletores combinados e classes em um layout de cards.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cards</title>
+  <style>
+    .card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .card { background: white; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .card img { width: 100%; height: 200px; object-fit: cover; }
+    .card .content { padding: 15px; }
+    .card .title { font-size: 1.2em; margin-bottom: 10px; }
+    .card:hover { transform: translateY(-5px); transition: transform 0.3s; }
+  </style>
+</head>
+<body>
+  <div class="card-container">
+    <div class="card">
+      <img src="card1.jpg" alt="Card 1">
+      <div class="content">
+        <h3 class="title">Título 1</h3>
+        <p>Descrição...</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="card2.jpg" alt="Card 2">
+      <div class="content">
+        <h3 class="title">Título 2</h3>
+        <p>Descrição...</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 9 – Corrija nomes de propriedades e IDs em um modal.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Modal</title>
+  <style>
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+    .modal-content { background: white; margin: 15% auto; padding: 20px; border-radius: 8px; width: 80%; max-width: 500px; }
+    .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+    .close:hover { color: black; }
+    #openModal { background: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <button id="openModal">Abrir Modal</button>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Conteúdo do Modal</h2>
+      <p>Este é um modal de exemplo.</p>
+    </div>
+  </div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 10 – Corrija seletores universais e classes em um accordion.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Accordion</title>
+  <style>
+    .accordion { max-width: 600px; margin: 20px auto; }
+    .accordion-item { border: 1px solid #ddd; margin-bottom: 10px; border-radius: 4px; }
+    .accordion-header { background: #f1f1f1; padding: 15px; cursor: pointer; font-weight: bold; }
+    .accordion-header:hover { background: #e1e1e1; }
+    .accordion-content { display: none; padding: 0 15px 15px; }
+    .accordion.active .accordion-content { display: block; }
+  </style>
+</head>
+<body>
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header">Seção 1</div>
+      <div class="accordion-content">Conteúdo da seção 1...</div>
+    </div>
+    <div class="accordion-item active">
+      <div class="accordion-header">Seção 2</div>
+      <div class="accordion-content">Conteúdo da seção 2...</div>
+    </div>
+  </div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 11 – Corrija erros em :focus e classes em inputs de um wizard.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Wizard</title>
+  <style>
+    .wizard-step { display: none; }
+    .wizard-step.active { display: block; }
+    input { padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; }
+    input:focus { border-color: #007bff; box-shadow: 0 0 5px rgba(0,123,255,0.5); }
+    .nav-btn { padding: 10px 20px; margin: 5px; background: #6c757d; color: white; border: none; cursor: pointer; }
+    .nav-btn:hover { background: #5a6268; }
+  </style>
+</head>
+<body>
+  <div class="wizard-step active">
+    <h2>Passo 1</h2>
+    <input type="text" placeholder="Nome">
+  </div>
+  <div class="wizard-step">
+    <h2>Passo 2</h2>
+    <input type="email" placeholder="Email">
+  </div>
+  <button class="nav-btn">Próximo</button>
+  <button class="nav-btn">Anterior</button>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 12 – Corrija seletores de atributo e IDs em links de um footer.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Footer</title>
+  <style>
+    footer { background: #343a40; color: white; padding: 20px; text-align: center; }
+    footer a { color: #ffc107; text-decoration: none; margin: 0 10px; }
+    footer a:hover { text-decoration: underline; }
+    [href^="https"] { color: #17a2b8; }
+    #copyright { font-size: 0.9em; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <footer>
+    <p>Links: <a href="https://example.com">Externo</a> <a href="interno.html">Interno</a></p>
+    <p id="copyright">© 2025 Empresa</p>
+  </footer>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 13 – Corrija classes múltiplas e pseudo-elementos em badges.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Badges</title>
+  <style>
+    .badge { display: inline-block; padding: 5px 10px; background: #6c757d; color: white; border-radius: 20px; font-size: 0.8em; position: relative; }
+    .badge::after { content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #6c757d; }
+    .badge.primary { background: #007bff; }
+    .badge.primary::after { border-top-color: #007bff; }
+    .badge.secondary { background: #6c757d; }
+  </style>
+</head>
+<body>
+  <h1>Exemplo <span class="badge primary">Primário</span> <span class="badge secundario">Secundário</span></h1>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 14 – Corrija hierarquia de seletores e :nth-child em uma tabela.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabela</title>
+  <style>
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background: #f8f9fa; font-weight: bold; }
+    tr:nth-child(even) { background: #f8f9fa; }
+    tr:hover { background: #e9ecef; }
+    .table .highlight { background: #fff3cd; }
+  </style>
+</head>
+<body>
+  <table class="table">
+    <thead>
+      <tr><th>Nome</th><th>Idade</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight"><td>João</td><td>25</td></tr>
+      <tr><td>Maria</td><td>30</td></tr>
+    </tbody>
+  </table>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 15 – Corrija erros mistos em media queries e classes responsivas.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsivo</title>
+  <style>
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .row { display: flex; flex-wrap: wrap; }
+    .col { flex: 1; min-width: 250px; padding: 10px; }
+    @media (max-width: 768px) { .row { flex-direction: column; } .col { min-width: auto; } }
+    .col.full { flex: 100%; }
+    .hidden-mobile { display: none; }
+    @media (min-width: 769px) { .hidden-mobile { display: block; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">Coluna 1</div>
+      <div class="col full">Coluna 2 Full</div>
+      <div class="col hidden-mobile">Coluna 3 (desktop)</div>
+    </div>
+  </div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 16 (Modificação) – O código está correto. Faça com que o cursor do mouse seja uma mão (use cursor: pointer) quando posicionar em cima dos links do menu.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu Mod</title>
+  <style>
+    nav { background: #333; padding: 10px; }
+    .menu { list-style: none; display: flex; margin: 0; padding: 0; }
+    .menu li { margin-right: 20px; }
+    .menu a { color: white; text-decoration: none; padding: 10px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Sobre</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul>
+  </nav>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 17 (Modificação) – O código está correto. Aumente a escala de tamanho do botão ao posicionar o mouse (use transform: scale no :hover).", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Botão Mod</title>
+  <style>
+    button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <button>Clique aqui</button>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 18 (Modificação) – O código está correto. Use o :active para que, quando clicar, o botão reaja com uma cor diferente (diferente do :hover).", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Active Mod</title>
+  <style>
+    button { padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 4px; }
+    button:hover { background: #218838; }
+  </style>
+</head>
+<body>
+  <button>Teste Active</button>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 19 (Modificação) – O código está correto. Adicione uma transição suave (transition) para a cor de fundo dos cards no hover.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Transição Mod</title>
+  <style>
+    .card { padding: 20px; background: white; border: 1px solid #ddd; border-radius: 8px; }
+    .card:hover { background: #f8f9fa; }
+  </style>
+</head>
+<body>
+  <div class="card">Conteúdo do card</div>
+</body>
+</html>` }
+    ];
+
+    const container = document.getElementById("exercicios");
+
+    exercicios.forEach((ex, i) => {
+      const div = document.createElement("div");
+      div.className = "exercicio";
+      div.innerHTML = `
+        <p>${ex.enunciado}</p>
+        <div class="editor">
+          <textarea id="code${i}">${ex.codigo}</textarea>
+          <iframe id="preview${i}"></iframe>
+        </div>
+        <button onclick="runCode(${i})">Rodar</button>
+      `;
+      container.appendChild(div);
+
+      // Auto-resize textarea
+      const textarea = document.getElementById("code" + i);
+      function resizeTextarea() {
+        textarea.style.height = 'auto';
+        textarea.style.height = Math.min(textarea.scrollHeight, 600) + 'px';
+      }
+      resizeTextarea(); // Initial resize
+      textarea.addEventListener('input', resizeTextarea);
+    });
+
+    window.runCode = function (i) {
+      const code = document.getElementById("code" + i).value;
+      const iframe = document.getElementById("preview" + i);
+      iframe.srcdoc = code;
+    }
+  </script>
+</body>
+</html>
