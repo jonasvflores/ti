@@ -31,7 +31,6 @@
     }
     textarea, iframe {
       width: 50%;
-      height: 350px;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-family: monospace;
@@ -39,7 +38,16 @@
       padding: 8px;
       background: #fff;
     }
+    textarea {
+      height: auto;
+      min-height: 250px;
+      max-height: 600px;
+      overflow-y: hidden;
+      resize: vertical;
+      line-height: 1.4;
+    }
     iframe {
+      height: 350px;
       background: #fafafa;
     }
     button {
@@ -447,6 +455,16 @@
         <button onclick="runCode(${i})">Rodar</button>
       `;
       container.appendChild(div);
+
+      // Auto-resize textarea
+      const textarea = document.getElementById("code" + i);
+      function resizeTextarea() {
+        textarea.style.height = 'auto';
+        const newHeight = Math.min(textarea.scrollHeight, 600);
+        textarea.style.height = newHeight + 'px';
+      }
+      resizeTextarea(); // Initial resize
+      textarea.addEventListener('input', resizeTextarea);
     });
 
     window.runCode = function (i) {
