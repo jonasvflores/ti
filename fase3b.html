@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercícios de Correção HTML + CSS - Fase 3</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .exercicio {
+      margin-bottom: 40px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .exercicio p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .editor {
+      display: flex;
+      gap: 20px;
+    }
+    textarea, iframe {
+      width: 50%;
+      height: 350px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 14px;
+      padding: 8px;
+      background: #fff;
+    }
+    iframe {
+      background: #fafafa;
+    }
+    button {
+      margin-top: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      background: #0078d7;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Exercícios de Correção (HTML + CSS) - Fase 3</h1>
+  <p style="text-align:center; margin-bottom:40px;">
+    Corrija os erros no código para que o CSS aplique corretamente, focando em IDs, classes e seletores. Para os exercícios de modificação, altere conforme instruído. O resultado aparece ao lado.
+  </p>
+
+  <div id="exercicios"></div>
+
+  <script>
+    const exercicios = [
+      { enunciado: "Exercício 1 – Corrija o seletor de classe usado como ID no CSS.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    #destaque { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <p class="destaque">Texto em destaque</p>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 2 – Corrija o uso duplicado de ID no HTML e ajuste o CSS para classes.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    #item { background: yellow; padding: 10px; }
+  </style>
+</head>
+<body>
+  <div id="item">Item 1</div>
+  <div id="item">Item 2</div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 3 – Corrija o nome da classe no HTML para matching com o CSS.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    .btn { background: blue; color: white; border: none; }
+  </style>
+</head>
+<body>
+  <button class="bnt">Clique aqui</button>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 4 – Corrija o seletor de ID usado como classe no CSS.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    .titulo { color: green; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1 id="titulo">Meu Título</h1>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 5 – Corrija a falta de aspas no atributo class do HTML.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    .aviso { color: orange; font-style: italic; }
+  </style>
+</head>
+<body>
+  <p class=aviso>Aviso importante</p>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 6 – Corrija o seletor de tag incorreto no CSS.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    span { border: 1px solid black; padding: 5px; }
+  </style>
+</head>
+<body>
+  <div>Conteúdo com borda</div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 7 – Corrija o erro de digitação na propriedade CSS e o seletor de classe.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    #fundo { backgroud-color: lightblue; }
+  </style>
+</head>
+<body class="fundo">
+  <p>Texto com fundo</p>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 8 – Corrija o seletor descendente no CSS para aplicar corretamente.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    .container p { color: purple; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span>Texto roxo</span>
+  </div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 9 – Corrija o nome de cor incorreto no CSS e o ID no HTML.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    #texto { color: redd; }
+  </style>
+</head>
+<body>
+  <p id="textoo">Texto vermelho</p>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 10 – Corrija a falta de unidade na propriedade CSS e a classe múltipla.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    .caixa { width: 200; height: 100px; background: gray; }
+  </style>
+</head>
+<body>
+  <div class="caixa grande">Caixa cinza</div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 11 – Corrija a família de fonte sem aspas no CSS e o seletor.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    body { font-family: Times New Roman; }
+    .titulo { font-size: 24px; }
+  </style>
+</head>
+<body>
+  <h1 id="titulo">Título com fonte</h1>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 12 – Corrija o seletor combinado incorreto no CSS.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    div.p { background: pink; }
+  </style>
+</head>
+<body>
+  <div>
+    <p>Parágrafo rosa</p>
+  </div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 13 – Corrija o atributo id sem aspas e o CSS correspondente.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    #botao { border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <button id=botao>Botão arredondado</button>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 14 – Corrija a hierarquia de seletores no CSS para IDs e classes.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+  <style>
+    #menu .item { display: inline; margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <nav class="menu">
+    <a class="item">Link 1</a>
+    <a class="item">Link 2</a>
+  </nav>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 15 – Corrija os erros mistos em HTML e CSS para aplicação correta de estilos.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo Final</title>
+  <style>
+    .conteudo { paddding: 20px; border: 1px solid; }
+    #cabecalho { background: blue color white; }
+  </style>
+</head>
+<body>
+  <header id="cabecalho">Cabeçalho</header>
+  <main class=conteudo>Conteúdo principal</main>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 16 (Modificação) – O código está correto. Adicione um botão sem borda ao final do body.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Modificação</title>
+  <style>
+    button { padding: 10px; background: green; color: white; }
+  </style>
+</head>
+<body>
+  <button>Botão Existente</button>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 17 (Modificação) – O código está correto. Troque a borda de todos os botões da classe 'btn' para 2px solid red.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Modificação</title>
+  <style>
+    .btn { padding: 10px; background: blue; color: white; border: 1px solid black; }
+  </style>
+</head>
+<body>
+  <button class="btn">Botão 1</button>
+  <button class="btn">Botão 2</button>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 18 (Modificação) – O código está correto. Altere a cor de fundo do elemento com ID 'fundo' para yellow.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Modificação</title>
+  <style>
+    #fundo { background: lightblue; padding: 20px; }
+  </style>
+</head>
+<body>
+  <div id="fundo">Conteúdo com fundo</div>
+</body>
+</html>` },
+
+      { enunciado: "Exercício 19 (Modificação) – O código está correto. Adicione uma classe 'destaque' ao parágrafo e estilize-o no CSS para texto em italic e bold.", codigo: `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Modificação</title>
+  <style>
+    p { font-size: 16px; }
+  </style>
+</head>
+<body>
+  <p>Texto normal</p>
+</body>
+</html>` }
+    ];
+
+    const container = document.getElementById("exercicios");
+
+    exercicios.forEach((ex, i) => {
+      const div = document.createElement("div");
+      div.className = "exercicio";
+      div.innerHTML = `
+        <p>${ex.enunciado}</p>
+        <div class="editor">
+          <textarea id="code${i}">${ex.codigo}</textarea>
+          <iframe id="preview${i}"></iframe>
+        </div>
+        <button onclick="runCode(${i})">Rodar</button>
+      `;
+      container.appendChild(div);
+    });
+
+    window.runCode = function (i) {
+      const code = document.getElementById("code" + i).value;
+      const iframe = document.getElementById("preview" + i);
+      iframe.srcdoc = code;
+    }
+  </script>
+</body>
+</html>
