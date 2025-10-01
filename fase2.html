@@ -1,477 +1,656 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Fase 2</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prova HTML e CSS - Interativa (25 Questões)</title>
   <style>
+
+     /* HUMMM.. POIS NÃO?  */
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f9f9f9;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f7f9fb;
+      color: #222;
+      line-height: 1.5;
     }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .exercicio {
-      margin-bottom: 40px;
-      padding: 15px;
-      border: 1px solid #ddd;
+    h1, h2, h3 { text-align: center; color: #222; }
+    .secao {
+      background: #fff;
+      margin: 18px 0;
+      padding: 18px;
       border-radius: 8px;
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
-    .exercicio p {
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .editor {
-      display: flex;
-      gap: 20px;
-    }
-    textarea, iframe {
-      width: 50%;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: monospace;
-      font-size: 14px;
-      padding: 8px;
-      background: #fff;
-    }
-    textarea {
-      height: auto;
-      min-height: 250px;
-      max-height: 600px;
-      overflow-y: hidden;
-      resize: vertical;
-      line-height: 1.4;
-    }
-    iframe {
-      height: 350px;
-      background: #fafafa;
-    }
-    button {
-      margin-top: 10px;
-      padding: 6px 12px;
-      border: none;
+    .pergunta {
+      margin-bottom: 14px;
+      padding: 12px;
+      border-left: 4px solid #0b71c9;
+      background: #f6f9fd;
       border-radius: 4px;
-      background: #0078d7;
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background 0.2s;
     }
-    button:hover {
-      background: #005fa3;
+    label { display: block; margin: 6px 0; cursor: pointer; }
+    input[type="radio"], input[type="checkbox"] { margin-right: 8px; }
+    select { width: 100%; padding: 6px; margin-top: 6px; }
+    textarea { width: 100%; height: 200px; font-family: monospace; padding: 8px; border-radius: 6px; border: 1px solid #ccc; }
+    .editor { display: flex; gap: 16px; flex-wrap: wrap; }
+    .editor textarea, .editor iframe { flex: 1 1 420px; min-width: 300px; height: 260px; }
+    iframe { border: 1px solid #ddd; border-radius: 6px; background: #fafafa; }
+    .btn {
+      background: #0b71c9; color: #fff; border: none; padding: 10px 16px;
+      border-radius: 6px; cursor: pointer; display: inline-block;
     }
+    .btn:disabled { background: #9cc1ea; cursor: not-allowed; }
+    .small { font-size: 0.9em; color: #444; }
+    .nota-parcial { font-weight: bold; color: #0b71c9; margin-left: 12px; }
+    .center { text-align: center; }
+    .danger { color: #b00020; font-weight: bold; }
+    pre { background:#f3f4f6; padding:8px; border-radius:6px; overflow:auto; }
+    input[type="text"], input[type="password"] { padding:8px; border-radius:6px; border:1px solid #ccc; width: calc(100% - 18px); }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; align-items:center; }
+    @media (max-width:700px) { .grid{ grid-template-columns: 1fr; } .editor textarea, .editor iframe{ height:200px; } }
   </style>
-</head>
-<body>
-  <h1>Parece que alguém gosta de um desafio!</h1>
-  <p style="text-align:center; margin-bottom:40px;">
-    Agora os códigos ficaram um pouco mais verbosos, mas nada impossível... ainda
-  </p>
 
-  <div id="exercicios"></div>
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body oncontextmenu="return false;">
+  <h1>Prova Interativa: HTML e CSS - 25 Questões</h1>
+  <p class="center small"><strong>Preencha Nome e Turma antes de iniciar.</strong> A nota será calculada apenas quando você gerar o PDF. Depois de gerar, a prova ficará bloqueada neste navegador.</p>
+
+  <div class="secao">
+    <h2>Dados do Aluno</h2>
+    <div class="grid">
+      <label>Nome:<br><input type="text" id="nomeAluno" placeholder="Ex: João da Silva"></label>
+      <label>Turma:<br><input type="text" id="turmaAluno" placeholder="Ex: 2TI-A"></label>
+    </div>
+  </div>
+
+  <div class="secao" id="parte1">
+    <h2>Parte 1: Questões Teóricas (1-15)</h2>
+
+    <h3>Múltipla Escolha (1-5)</h3>
+    <div class="pergunta">
+      <strong>1. No conceito de semântica HTML, qual tag indica um rodapé de página ou seção?</strong>
+      <label><input type="radio" name="q1" value="a"> a) &lt;div&gt;</label>
+      <label><input type="radio" name="q1" value="b"> b) &lt;footer&gt;</label>
+      <label><input type="radio" name="q1" value="c"> c) &lt;span&gt;</label>
+      <label><input type="radio" name="q1" value="d"> d) &lt;br&gt;</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>2. No Box Model do CSS, qual camada fica entre o conteúdo e a borda?</strong>
+      <label><input type="radio" name="q2" value="a"> a) Margin</label>
+      <label><input type="radio" name="q2" value="b"> b) Border</label>
+      <label><input type="radio" name="q2" value="c"> c) Padding</label>
+      <label><input type="radio" name="q2" value="d"> d) Position</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>3. Qual seletor CSS tem a maior especificidade (pontuação 1000)?</strong>
+      <label><input type="radio" name="q3" value="a"> a) Classe (.exemplo)</label>
+      <label><input type="radio" name="q3" value="b"> b) ID (#exemplo)</label>
+      <label><input type="radio" name="q3" value="c"> c) Inline style (style="...")</label>
+      <label><input type="radio" name="q3" value="d"> d) Seletor universal (*)</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>4. Numa situação onde o CSS não aplica cor ao título porque usa ID mas o HTML tem class, qual é o erro principal?</strong>
+      <label><input type="radio" name="q4" value="a"> a) Falta de &lt;!DOCTYPE html&gt;</label>
+      <label><input type="radio" name="q4" value="b"> b) Incompatibilidade entre seletor # e class no HTML</label>
+      <label><input type="radio" name="q4" value="c"> c) Tag &lt;style&gt; fora de &lt;head&gt;</label>
+      <label><input type="radio" name="q4" value="d"> d) Ausência de meta charset</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>5. Qual framework CSS permite usar classes prontas como "btn btn-primary"?</strong>
+      <label><input type="radio" name="q5" value="a"> a) Uiverse.io</label>
+      <label><input type="radio" name="q5" value="b"> b) Bootstrap</label>
+      <label><input type="radio" name="q5" value="c"> c) Flexbox</label>
+      <label><input type="radio" name="q5" value="d"> d) DOM Tree</label>
+    </div>
+
+    <h3>Verdadeiro ou Falso (6-10)</h3>
+
+    <div class="pergunta">
+      <strong>6. O CSS é uma linguagem imperativa, como JavaScript.</strong>
+      <label><input type="checkbox" id="q6v"> Verdadeiro</label>
+      <label><input type="checkbox" id="q6f"> Falso</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>7. Hiperlinks (&lt;a href&gt;) transformam a web em um grafo.</strong>
+      <label><input type="checkbox" id="q7v"> Verdadeiro</label>
+      <label><input type="checkbox" id="q7f"> Falso</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>8. No seletor de classe, você usa # seguido do nome.</strong>
+      <label><input type="checkbox" id="q8v"> Verdadeiro</label>
+      <label><input type="checkbox" id="q8f"> Falso</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>9. A herança no CSS faz com que 'color' passe do elemento pai para os filhos.</strong>
+      <label><input type="checkbox" id="q9v"> Verdadeiro</label>
+      <label><input type="checkbox" id="q9f"> Falso</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>10. Seletor "link { color: blue; }" não funciona para &lt;a&gt;.</strong>
+      <label><input type="checkbox" id="q10v"> Verdadeiro</label>
+      <label><input type="checkbox" id="q10f"> Falso</label>
+    </div>
+
+    <h3>Relacionar (11-15)</h3>
+    <p class="small">Relacione a coluna A com a coluna B usando os selects.</p>
+
+    <div class="pergunta">
+      <strong>11. Seletor universal (*)</strong>
+      <select id="rel11">
+        <option value="">Selecione...</option>
+        <option value="a">a) Espaçamento externo entre elementos</option>
+        <option value="b">b) Aplica estilos a TODOS os elementos da página</option>
+        <option value="c">c) Framework que usa &lt;link&gt; para carregar estilos</option>
+        <option value="d">d) &lt;em&gt; semântico vs &lt;i&gt;</option>
+        <option value="e">e) Marcadores aparecem por padrão</option>
+      </select>
+    </div>
+
+    <div class="pergunta">
+      <strong>12. Tag &lt;em&gt; vs. &lt;i&gt;</strong>
+      <select id="rel12">
+        <option value="">Selecione...</option>
+        <option value="a">a) Espaçamento externo entre elementos</option>
+        <option value="b">b) Aplica estilos a TODOS os elementos da página</option>
+        <option value="c">c) Framework que usa &lt;link&gt; para carregar estilos</option>
+        <option value="d">d) &lt;em&gt; tem ênfase semântica; &lt;i&gt; só itálico</option>
+        <option value="e">e) Marcadores aparecem por padrão</option>
+      </select>
+    </div>
+
+    <div class="pergunta">
+      <strong>13. Margin no Box Model</strong>
+      <select id="rel13">
+        <option value="">Selecione...</option>
+        <option value="a">a) Espaçamento externo entre elementos</option>
+        <option value="b">b) Aplica estilos a TODOS os elementos</option>
+        <option value="c">c) Framework que usa &lt;link&gt; para carregar estilos</option>
+        <option value="d">d) &lt;em&gt; semântico vs &lt;i&gt;</option>
+        <option value="e">e) Marcadores aparecem por padrão</option>
+      </select>
+    </div>
+
+    <div class="pergunta">
+      <strong>14. Erro comum em listas &lt;ul&gt; sem CSS</strong>
+      <select id="rel14">
+        <option value="">Selecione...</option>
+        <option value="a">a) Espaçamento externo entre elementos</option>
+        <option value="b">b) Aplica estilos a TODOS os elementos</option>
+        <option value="c">c) Framework que usa &lt;link&gt; para carregar estilos</option>
+        <option value="d">d) &lt;em&gt; semântico vs &lt;i&gt;</option>
+        <option value="e">e) Marcadores aparecem por padrão; use list-style: none;</option>
+      </select>
+    </div>
+
+    <div class="pergunta">
+      <strong>15. Bootstrap CDN</strong>
+      <select id="rel15">
+        <option value="">Selecione...</option>
+        <option value="a">a) Espaçamento externo entre elementos</option>
+        <option value="b">b) Aplica estilos a TODOS os elementos</option>
+        <option value="c">c) Framework que usa &lt;link&gt; para carregar estilos</option>
+        <option value="d">d) &lt;em&gt; semântico vs &lt;i&gt;</option>
+        <option value="e">e) Marcadores aparecem por padrão</option>
+      </select>
+    </div>
+
+  </div>
+  <div class="secao" id="parte2">
+    <h2>Parte 2: Questões Práticas de Correção (16-25)</h2>
+    <p class="small center">Edite o código no campo à esquerda. Clique "Rodar" para ver o preview. A correção definitiva é feita apenas ao gerar o PDF.</p>
+
+    <div id="exercicios-correcao"></div>
+  </div>
+
+  <div class="secao center">
+    <p id="msgSemResposta" class="danger" style="display:none;">Por favor, responda a <strong>todas</strong> as questões antes de gerar o PDF.</p>
+
+    <button id="btnGerarPDF" class="btn">Gerar PDF (Salvar e Bloquear)</button>
+
+    <div style="margin-top:12px;">
+      <input type="password" id="senhaLiberacao" placeholder="Senha do professor (para liberar nova tentativa)" />
+      <button id="btnLiberar" class="btn" style="margin-left:8px;">Liberar Nova Tentativa</button>
+      <p class="small" style="margin-top:8px;">Se precisar liberar reenvio para um aluno, digite a senha e clique em "Liberar Nova Tentativa".</p>
+    </div>
+  </div>
 
   <script>
-    const exercicios = [
-      { enunciado: "Exercício 1 – Corrija as tags abertas e fechadas.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF8">
-  <title>Loja Virtual<title>
-  <style>
-    body { background colr: #f0f0f0; font-famly: Arial }
-    header { background: lightblue padding 20px; text-align: center; }
-    h1 { colr: navy font-size 24px }
-    nav ul { list-style: none; margin 0 padding 0 }
-    nav li { display inline; margin-right: 15px }
-    nav a { color: darkblue text-decoration none; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Minha Loja</h2>
-    <nav>
-      <ul>
-        <li><a hrfe="index.html">Home</a></li>
-        <li><a href="produtos.html">Produtos</li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section>
-      <h2>Promoções</h3>
-      <p>Confira nossos <stong>descontos</stong> especiais<p>
-    </section>
-  </main>
-  <footer>
-    <p>© 2025 Loja Virtual<p>
-  </footer>
-</body>
-</html>` },
-
-      { enunciado: "Exercício 2 – Corrija os atributos incorretos.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Agenda Cultural</title>
-  <style>
-    body { background: #fff font-size 16px }
-    h1 { text-algn center; color darkred; }
-    .evento { border 1px solid #333 margin:10px padding:10px }
-    .data { font-weigth: bold; color: #666 }
-    a { color blue text-decoration none }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Agenda da Cidade<h1>
-  </header>
-  <main>
-    <article class="evento">
-      <h2>Show de Rock</h2>
-      <p class="data">12/09/2025</span>
-      <p>Local: Praça Central</p>
-      <a hfer="detalhes.html">Saiba mais</a>
-    </article>
-    <article class="evento">
-      <h2>Exposição de Arte</h2>
-      <p class="data">20/09/2025<p>
-      <p>Local: Museu Municipal</p>
-      <a href="detalhes.html">Saiba mais</p>
-    </article>
-  </main>
-  <footer>
-    <p>Agenda Cultural - Todos os direitos reservados</footer>
-</body>
-</html>` },
-
-      { enunciado: "Exercício 3 – Corrija o CSS.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Portal da Escola</title>
-  <style>
-    body { font-family: Arial; background-color lightgrey }
-    header { background-color: #444; colr: white; padding: 10px }
-    h1 { font-size:28px text-align: center }
-    section { margn: 20px padding: 10px border 1px solid #000 }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Portal da Escola</h1>
-  </header>
-  <main>
-    <section>
-      <h2>Notícias</h2>
-      <p>Bem-vindo ao portal da escola<p>
-    </section>
-  </main>
-  <footer>
-    <p>© 2025 Escola Modelo</p>
-</body>
-</html>` },
-
-      { enunciado: "Exercício 4 – Corrija os erros no blog de viagens.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Blog de Viagens</title>
-  <style>
-    body { font-family Arial; margin 0; padding 0; }
-    header { background orange; padding 15px text-align center }
-    h1 { colr: white; }
-    article { margin: 20px padding:15px border 1px solid #ddd }
-    img { widht 200px; heigt: auto }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Minhas Viagens<h1>
-  </header>
-  <main>
-    <article>
-      <h2>Paris</h2>
-      <img src="paris.jpg" alt="Paris">
-      <p>Uma cidade incrível<p>
-    </article>
-    <article>
-      <h2>Roma</h2>
-      <img src="roma.jpg">
-      <p>História e cultura</p>
-    </article>
-  </main>
-  <footer>
-    <p>Blog de Viagens 2025</p>
-</body>
-</html>` },
-
-      { enunciado: "Exercício 5 – Corrija o CSS.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Exemplo CSS</title>
-  <style>
-    body 
-      background: lightblue
-      font-family Arial
+  const gabaritoMultipla = {1: 'b', 2: 'c', 3: 'c', 4: 'b', 5: 'b'};
+  const gabaritoVF = {6: 'f', 7: 'v', 8: 'f', 9: 'v', 10: 'v'};
+  const gabaritoRelacionar = {11: 'b', 12: 'd', 13: 'a', 14: 'e', 15: 'c'};
+  const exerciciosPraticos = [
+    {
+      enunciado: "16 – Corrija tags de hiperlink e use <nav> semântico.",
+      codigo: `<!DOCTYPE html><html><head><title>Menu</title></head><body><div><a href="home.html">Home</a><a href="sobre.html">Sobre</a></div></body></html>`,
+      checks: ['<nav>', 'href="home', '</nav>'] 
+    },
+    {
+      enunciado: "17 – Corrija seletor de classe para <header> semântico.",
+      codigo: `<!DOCTYPE html><html><head><style>.cabe { background: blue; color: white; }</style></head><body><header>Cabeçalho</header></body></html>`,
+      checks: ['.header {', 'header { background: blue', '<header class'] // ajustado 
+    },
+    {
+      enunciado: "18 – Adicione padding e margin no box model para o div.",
+      codigo: `<!DOCTYPE html><html><head><style>div { border: 1px solid black; }</style></head><body><div>Caixa sem espaçamento</div></body></html>`,
+      checks: ['padding: 10px;', 'margin: 10px;'] 
+    },
+    {
+      enunciado: "19 – Use herança de color do body para <p>.",
+      codigo: `<!DOCTYPE html><html><head><style>p { color: inherit; }</style></head><body style=\"color: green;\"><p>Texto verde por herança?</p></body></html>`,
+      checks: ['p { color: inherit;', 'body style="color: green;"'] // ajustado
+    },
+    {
+      enunciado: "20 – Use seletor universal * para reset de margins/paddings.",
+      codigo: `<!DOCTYPE html><html><head><style>margin: 0; padding: 0;</style></head><body><p>Elementos com margens padrão</p></body></html>`,
+      checks: ['* { margin: 0;', '* { padding: 0;'] 
+    },
+    {
+      enunciado: "21 – Troque <i> por <em> para ênfase semântica.",
+      codigo: `<!DOCTYPE html><html><head></head><body><p>Leia com <i>atenção</i> especial.</p></body></html>`,
+      checks: ['<em>atenção</em>', '<em>', '</em>'] 
+    },
+    {
+      enunciado: "22 – Feche tags <li> e use list-style: none no <ul>.",
+      codigo: `<!DOCTYPE html><html><head><style>ul { list-style: disc; }</style></head><body><ul><li>Item 1<li>Item 2</ul></body></html>`,
+      checks: ['<li>Item 1</li>', '<li>Item 2</li>', 'list-style: none;'] 
+    },
+    {
+      enunciado: "23 – Corrija href em <a> e adicione target=\"_blank\".",
+      codigo: `<!DOCTYPE html><html><head></head><body><a hrf="https://example.com">Link</a></body></html>`,
+      checks: ['href="https://example.com"', 'target="_blank"', '<a href'] 
+    },
+    {
+      enunciado: "24 – Corrija seletor ID para <footer> único.",
+      codigo: `<!DOCTYPE html><html><head><style>#rodape { text-align: center; color: gray; }</style></head><body><footer class="rodape">© 2025</footer></body></html>`,
+      checks: ['#footer {', 'id="footer"', '<footer id'] 
+    },
+    {
+      enunciado: "25 – Corrija cascata: última regra de h1 deve prevalecer (azul).",
+      codigo: `<!DOCTYPE html><html><head><style>h1 { color: red; } h1 { color: blue; }</style></head><body><h1>Título com cor final?</h1></body></html>`,
+      checks: ['h1 { color: blue;', 'color: blue !important'] 
     }
-    h1 {
-      colr navy
-      font-size 24px
-      text-align center
-    h2 {
-      color: darkred
-      font-weight bold
-  </style>
-</head>
-<body>
-  <h1>Exemplo de Título</h1>
-  <h2>Subtítulo</h2>
-  <p>Corrija os erros de CSS nesta página.</p>
-</body>
-</html>` },
+  ];
 
-      { enunciado: "Exercício 6 – Corrija a hierarquia das tags.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Site de Notícias</title>
-  <style>
-    body { font-family: Verdana; background lightgray }
-    h1 { colr: blue; }
-  </style>
-</head>
-<body>
-  <p>Bem-vindo!</p>
-  <h1>Últimas Notícias</h2>
-  <section>
-    <article>
-      <h2>Evento</h2>
-      <p>Hoje acontece um evento importante
-    </article>
-  </section>
-  <footer>
-    <p>Rodapé do site</p>
-</body>
-</html>` },
+  const containerPratico = document.getElementById('exercicios-correcao');
+  exerciciosPraticos.forEach((ex, idx) => {
+    const i = 16 + idx;
+    const div = document.createElement('div');
+    div.className = 'pergunta';
+    div.innerHTML = `
+      <p><strong>Questão ${i}:</strong> ${ex.enunciado}</p>
+      <div class="editor">
+        <textarea id="code${i}">${ex.codigo}</textarea>
+        <iframe id="preview${i}" title="preview${i}"></iframe>
+      </div>
+      <div style="margin-top:8px;">
+        <button class="btn" onclick="runCode(${i})">Rodar</button>
+        <button class="btn" onclick="mostrarFeedback(${i})">Verificar (apenas feedback)</button>
+        <span id="parcial${i}" class="nota-parcial"></span>
+      </div>
+    `;
+    containerPratico.appendChild(div);
+  });
 
-      { enunciado: "Exercício 7 – Corrija os links e atributos.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Links Importantes</title>
-  <style>
-    a { color red text-decoration none }
-  </style>
-</head>
-<body>
-  <h1>Links</h1>
-  <ul>
-    <li><a hrfe="https://google.com">Google</a></li>
-    <li><a href="https://yahoo.com" Yahoo</a></li>
-    <li><a href=https://bing.com>Bing</a></li>
-  </ul>
-</body>
-</html>` },
+  // iframe
+  window.runCode = function(i) {
+    const code = document.getElementById('code' + i).value;
+    const iframe = document.getElementById('preview' + i);
+    iframe.srcdoc = code;
+  };
 
-      { enunciado: "Exercício 8 – Corrija o CSS.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Blog Pessoal</title>
-  <style>
-    body { background white font-family Arial }
-    header { background lightblue padding 20px }
-    h1 { colr: navy font-size 28px }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Meu Blog<h1>
-  </header>
-  <main>
-    <article>
-      <h2>Post 1</h2>
-      <p>Conteúdo aqui</p>
-    </article>
-  </main>
-  <footer>
-    <p>Rodapé</p>
-</body>
-</html>` },
-
-      { enunciado: "Exercício 9 – Corrija os elementos de lista.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Lista de Compras</title>
-  <style>
-    ul { list-stle none; margin 0; padding 0 }
-    li { padding 5px border-bottom 1px solid #333 }
-  </style>
-</head>
-<body>
-  <h1>Compras</h1>
-  <ul>
-    <li>Arroz
-    <li>Feijão</li>
-    <li>Macarrão<li>
-  </ul>
-</body>
-</html>` },
-
-      { enunciado: "Exercício 10 – Corrija o CSS.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Página Simples</title>
-  <style>
-    body { backgrund #fafafa; font-famly: sans-serif }
-    h1 { color navy text-align center }
-    p { margn 20px }
-  </style>
-</head>
-<body>
-  <h1>Página de Exemplo</h1>
-  <p>Um texto simples</p>
-</body>
-</html>` },
-
-      { enunciado: "Exercício 11 – Corrija as tags incorretas.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Página de Contato</title>
-  <style>
-    body { background: #eee; }
-    h1 { color darkgreen }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Contato</h2>
-  </header>
-  <main>
-    <p>Entre em contato conosco<p>
-  </main>
-  <footer>
-    <p>Rodapé</footer>
-</body>
-</html>` },
-
-      { enunciado: "Exercício 12 – Corrija o CSS.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Galeria</title>
-  <style>
-    body { background lightgray font-family Verdana }
-    img { widht 150px margin 10px }
-  </style>
-</head>
-<body>
-  <h1>Galeria de Imagens</h1>
-  <img src="img1.jpg" alt="Imagem 1">
-  <img src="img2.jpg" alt="Imagem 2">
-</body>
-</html>` },
-
-      { enunciado: "Exercício 13 – Corrija os títulos e parágrafos.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Artigo</title>
-  <style>
-    h1 { colr navy }
-    p { font-sze 16px }
-  </style>
-</head>
-<body>
-  <h1>Artigo<h1>
-  <p>Primeiro parágrafo
-  <p>Segundo parágrafo</p>
-</body>
-</html>` },
-
-      { enunciado: "Exercício 14 – Corrija os erros de navegação.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Menu</title>
-  <style>
-    nav ul { list-style none; }
-    nav li { display inline margin-right 15px }
-    a { color blue text-decoration none }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Menu Principal</h1>
-    <nav>
-      <ul>
-        <li><a href="home.html">Home</li>
-        <li><a href="sobre.html">Sobre</a>
-        <li><a hrfe="contato.html">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
-</body>
-</html>` },
-
-      { enunciado: "Exercício 15 – Corrija o CSS.", codigo: `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Página Final</title>
-  <style>
-    body { backgrond white; font-famly Arial }
-    h1 { color red font-size 32px text-align center }
-    p { margn 15px colr #333 }
-  </style>
-</head>
-<body>
-  <h1>Exercício Final</h1>
-  <p>Este é o último exercício da lista.</p>
-</body>
-</html>` }
-    ];
-
-    const container = document.getElementById("exercicios");
-
-    exercicios.forEach((ex, i) => {
-      const div = document.createElement("div");
-      div.className = "exercicio";
-      div.innerHTML = `
-        <p>${ex.enunciado}</p>
-        <div class="editor">
-          <textarea id="code${i}">${ex.codigo}</textarea>
-          <iframe id="preview${i}"></iframe>
-        </div>
-        <button onclick="runCode(${i})">Rodar</button>
-      `;
-      container.appendChild(div);
-
-      // Auto-resize textarea
-      const textarea = document.getElementById("code" + i);
-      function resizeTextarea() {
-        textarea.style.height = 'auto';
-        const newHeight = Math.min(textarea.scrollHeight, 600);
-        textarea.style.height = newHeight + 'px';
-      }
-      resizeTextarea(); // Initial resize
-      textarea.addEventListener('input', resizeTextarea);
+  window.mostrarFeedback = function(i) {
+    const idx = i - 16;
+    const code = (document.getElementById('code' + i).value || '').toLowerCase();
+    const checks = exerciciosPraticos[idx].checks;
+    let ok = 0;
+    let notas = [];
+    checks.forEach(c => {
+      const found = code.includes(c.toLowerCase());
+      notas.push(`${c}: ${found ? '✓' : '—'}`);
+      if (found) ok++;
     });
+    const parcial = (ok / checks.length).toFixed(2);
+    document.getElementById('parcial' + i).innerText = `Feedback: ${notas.join(' | ')} — Acertos: ${ok}/${checks.length}`;
+  };
 
-    window.runCode = function (i) {
-      const code = document.getElementById("code" + i).value;
-      const iframe = document.getElementById("preview" + i);
-      iframe.srcdoc = code;
+  // -------------------------
+
+  function todasRespondidas() {
+    const nome = document.getElementById('nomeAluno').value.trim();
+    const turma = document.getElementById('turmaAluno').value.trim();
+    if (!nome || !turma) return false;
+
+    for (let i=1;i<=5;i++){
+      if (!document.querySelector(`input[name="q${i}"]:checked`)) return false;
     }
+    for (let i=6;i<=10;i++){
+      const v = document.getElementById(`q${i}v`);
+      const f = document.getElementById(`q${i}f`);
+      if (!((v && v.checked) || (f && f.checked))) return false;
+    }
+    for (let i=11;i<=15;i++){
+      const sel = document.getElementById(`rel${i}`);
+      if (!sel || sel.value === '') return false;
+    }
+    for (let i=16;i<=25;i++){
+      const ta = document.getElementById('code' + i);
+      if (!ta || ta.value.trim() === '') return false;
+    }
+    return true;
+  }
+
+  function calcularPraticas() {
+    let total = 0;
+    const detalhamento = [];
+    for (let idx=0; idx<exerciciosPraticos.length; idx++){
+      const i = 16 + idx;
+      const code = document.getElementById('code' + i).value || '';
+      const codeLower = code.toLowerCase();
+      const checks = exerciciosPraticos[idx].checks;
+      let ok = 0;
+      checks.forEach(c => {
+        if (codeLower.includes(c.toLowerCase())) ok++;
+      });
+      const parcial = checks.length ? (ok / checks.length) : 0;
+      total += parcial;
+      detalhamento.push({ questao: i, ok, totalChecks: checks.length, parcial: parcial });
+    }
+    return { totalPraticas: total, detalhamento }; 
+  }
+
+
+  const senhaFragmentsBase64 = [
+    'ZW4=', // 'g'
+    'ZXI=', // 'n'
+    'Z28=', // 'i'
+    'bg=='  // 'o'
+  ];
+  function b64DecodeUnicode(str) {
+    return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+  }
+  function getSenhaProfessor() {
+    return senhaFragmentsBase64.map(b64DecodeUnicode).join('');
+  }
+  function localStorageKeyForAluno(nome, turma) {
+    const n = (nome || '').trim();
+    const t = (turma || '').trim();
+    return `provaFinalizada_${n.replace(/\s+/g,'_')}_${t.replace(/\s+/g,'_')}`;
+  }
+  let globalLogsKey = 'provaLogs_temp';
+  function localStorageKeyForLogs(nome, turma) {
+    const n = (nome || '').trim();
+    const t = (turma || '').trim();
+    if (!n || !t) {
+      return globalLogsKey;
+    }
+    return `provaLogs_${n.replace(/\s+/g,'_')}_${t.replace(/\s+/g,'_')}`;
+  }
+  function registrarTentativa(tipo) {
+    let chave = localStorageKeyForLogs(); //  current state pra controle
+    let logs = JSON.parse(localStorage.getItem(chave) || '[]');
+    const agora = new Date().toLocaleString('pt-BR');
+    logs.push(`${agora}: Tentativa de ${tipo}`);
+    localStorage.setItem(chave, JSON.stringify(logs));
+    const nome = document.getElementById('nomeAluno').value.trim();
+    const turma = document.getElementById('turmaAluno').value.trim();
+    if (nome && turma && chave === globalLogsKey) {
+      const realChave = localStorageKeyForLogs(nome, turma);
+      let realLogs = JSON.parse(localStorage.getItem(realChave) || '[]');
+      realLogs = realLogs.concat(logs);
+      localStorage.setItem(realChave, JSON.stringify(realLogs));
+      localStorage.removeItem(globalLogsKey); //  temp
+    }
+  }
+
+  function aplicarBloqueioSeJaRespondido() {
+    const nome = document.getElementById('nomeAluno').value.trim();
+    const turma = document.getElementById('turmaAluno').value.trim();
+    if (!nome || !turma) return; // sem dados 
+    const chave = localStorageKeyForAluno(nome, turma);
+    if (localStorage.getItem(chave) === 'true') {
+      document.getElementById('btnGerarPDF').disabled = true;
+      document.getElementById('btnGerarPDF').innerText = 'Prova já finalizada';
+    }
+  }
+
+  document.getElementById('nomeAluno').addEventListener('change', aplicarBloqueioSeJaRespondido);
+  document.getElementById('turmaAluno').addEventListener('change', aplicarBloqueioSeJaRespondido);
+
+  // -------------------------
+  // -------------------------
+  document.getElementById('btnGerarPDF').addEventListener('click', async function() {
+    const nome = document.getElementById('nomeAluno').value.trim();
+    const turma = document.getElementById('turmaAluno').value.trim();
+
+    if (!nome || !turma) {
+      alert('Preencha Nome e Turma antes de gerar o PDF.');
+      return;
+    }
+
+    const chave = localStorageKeyForAluno(nome, turma);
+    if (localStorage.getItem(chave) === 'true') {
+      alert('Prova já finalizada neste navegador para este aluno/turma.');
+      return;
+    }
+
+    if (!todasRespondidas()) {
+      document.getElementById('msgSemResposta').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    } else {
+      document.getElementById('msgSemResposta').style.display = 'none';
+    }
+
+    for (let i = 16; i <= 25; i++) {
+      runCode(i);
+    }
+
+    const praticasResult = calcularPraticas();
+
+    const chaveLogs = localStorageKeyForLogs(nome, turma);
+    let logs = JSON.parse(localStorage.getItem(chaveLogs) || '[]');
+    const tempLogs = JSON.parse(localStorage.getItem(globalLogsKey) || '[]');
+    if (tempLogs.length > 0) {
+      logs = logs.concat(tempLogs);
+      localStorage.removeItem(globalLogsKey);
+    }
+
+    const hoje = new Date();
+    const dataBR = hoje.toLocaleDateString('pt-BR');
+    const safeName = nome.replace(/[^\w\d_-]/g, '_');
+    const safeTurma = turma.replace(/[^\w\d_-]/g, '_');
+    const filename = `${safeName}_${safeTurma}_${dataBR.replace(/\//g,'-')}.pdf`;
+
+    const linhas = [];
+    linhas.push(`Prova: HTML e CSS - 25 Questões`);
+    linhas.push(`Data: ${dataBR}`);
+    linhas.push(`Aluno: ${nome}`);
+    linhas.push(`Turma: ${turma}`);
+    linhas.push('------------------------------------------------------------');
+    linhas.push('RESPOSTAS DO ALUNO:');
+    for (let i=1;i<=5;i++){
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      const resp = sel ? sel.value : '(sem resposta)';
+      linhas.push(`${i}. (Múltipla) resposta: ${resp}`);
+    }
+    for (let i=6;i<=10;i++){
+      const v = document.getElementById(`q${i}v`);
+      const f = document.getElementById(`q${i}f`);
+      const resp = v && v.checked ? 'v' : (f && f.checked ? 'f' : '(sem resposta)');
+      linhas.push(`${i}. (V/F) resposta: ${resp}`);
+    }
+    for (let i=11;i<=15;i++){
+      const sel = document.getElementById('rel' + i);
+      const resp = sel && sel.value ? sel.value : '(sem resposta)';
+      linhas.push(`${i}. (Relacionar) resposta: ${resp}`);
+    }
+
+    linhas.push('------------------------------------------------------------');
+    linhas.push('RESPOSTAS PRÁTICAS (código enviado, resultado renderizado e acertos por exercício):');
+
+    for (let idx=0; idx<exerciciosPraticos.length; idx++){
+      const i = 16 + idx;
+      const codigo = document.getElementById('code' + i).value || '';
+      const codeEsc = codigo.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const checks = exerciciosPraticos[idx].checks;
+      const codeLower = codigo.toLowerCase();
+      let ok = 0;
+      checks.forEach(c => {
+        if (codeLower.includes(c.toLowerCase())) ok++;
+      });
+      const parcial = checks.length ? (ok / checks.length) : 0;
+
+      linhas.push(`${i}. Acertos: ${ok}/${checks.length}`);
+      linhas.push(`Código corrigido:`);
+      const codeLines = codigo.split('\n');
+      for (const cl of codeLines) {
+        linhas.push(`   ${cl}`);
+      }
+      linhas.push('');
+
+      const iframe = document.getElementById(`preview${i}`);
+      let rendered = 'Preview não disponível (erro no carregamento)';
+      if (iframe && iframe.contentDocument && iframe.contentDocument.body) {
+        rendered = iframe.contentDocument.body.innerHTML;
+      }
+      const renderedEsc = rendered.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      linhas.push(`Resultado renderizado (HTML interno):`);
+      const renderedLines = renderedEsc.split('\n');
+      for (const rl of renderedLines) {
+        linhas.push(`   ${rl}`);
+      }
+      linhas.push(''); 
+    }
+
+    linhas.push('------------------------------------------------------------');
+    linhas.push('LOGS DE TENTATIVAS DE VIOLAÇÃO:');
+    if (logs.length > 0) {
+      logs.forEach(log => {
+        linhas.push(`   ${log}`);
+      });
+    } else {
+      linhas.push('   Nenhuma tentativa registrada.');
+    }
+    linhas.push('');
+
+    linhas.push('------------------------------------------------------------');
+    linhas.push('Observações: Os acertos nas práticas são baseados em detecções automáticas de correções específicas.');
+    linhas.push('Se houver divergências, o professor pode revisar o PDF entregue.');
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+    const margin = 40;
+    const lineHeight = 12;
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const usableWidth = pageWidth - margin * 2;
+    let cursorY = margin;
+
+    doc.setFont('Helvetica', 'normal');
+    doc.setFontSize(12);
+
+    function drawWrapped(text) {
+      const linesWrapped = doc.splitTextToSize(text, usableWidth);
+      for (const l of linesWrapped) {
+        if (cursorY > doc.internal.pageSize.getHeight() - margin) {
+          doc.addPage();
+          cursorY = margin;
+          doc.setFontSize(12);
+        }
+        doc.text(l, margin, cursorY);
+        cursorY += lineHeight;
+      }
+    }
+
+    for (const l of linhas) {
+      drawWrapped(l);
+    }
+
+    doc.save(filename);
+
+    localStorage.setItem(chave, 'true');
+    document.getElementById('btnGerarPDF').disabled = true;
+    document.getElementById('btnGerarPDF').innerText = 'Prova já finalizada';
+
+    alert('PDF gerado e download iniciado. A prova foi bloqueada neste navegador para este aluno/turma.');
+  });
+
+  // -------------------------
+  // -------------------------
+  document.getElementById('btnLiberar').addEventListener('click', function() {
+    const senhaDigitada = document.getElementById('senhaLiberacao').value || '';
+    const nome = document.getElementById('nomeAluno').value.trim();
+    const turma = document.getElementById('turmaAluno').value.trim();
+    if (!nome || !turma) {
+      alert('Informe Nome e Turma para liberar a prova deste aluno.');
+      return;
+    }
+    const chave = localStorageKeyForAluno(nome, turma);
+    const chaveLogs = localStorageKeyForLogs(nome, turma);
+    const senhaCorreta = getSenhaProfessor(); 
+
+    if (senhaDigitada === senhaCorreta) {
+      localStorage.removeItem(chave);
+      localStorage.removeItem(chaveLogs); 
+      localStorage.removeItem(globalLogsKey); 
+      document.getElementById('btnGerarPDF').disabled = false;
+      document.getElementById('btnGerarPDF').innerText = 'Gerar PDF (Salvar e Bloquear)';
+      alert('Nova tentativa liberada para ' + nome + ' / ' + turma);
+    } else {
+      alert('Senha incorreta.');
+    }
+  });
+
+  window.addEventListener('load', function() {
+    aplicarBloqueioSeJaRespondido();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.keyCode === 123) { 
+      e.preventDefault();
+      registrarTentativa('F12 (DevTools)');
+      return false;
+    }
+    if (e.ctrlKey) {
+      if (e.keyCode === 85) { 
+        e.preventDefault();
+        registrarTentativa('Ctrl+U (View Source)');
+        return false;
+      }
+      if (e.keyCode === 83) { 
+        e.preventDefault();
+        registrarTentativa('Ctrl+S (Save Page)');
+        return false;
+      }
+      if (e.keyCode === 67) { 
+        e.preventDefault();
+        registrarTentativa('Ctrl+C (Copy)');
+        return false;
+      }
+    }
+  });
+
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    registrarTentativa('Botão Direito (Context Menu)');
+    return false;
+  });
+
   </script>
+
 </body>
 </html>
