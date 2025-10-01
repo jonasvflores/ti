@@ -248,9 +248,9 @@
       checks: ['padding: 10px;', 'margin: 10px;'] 
     },
     {
-      enunciado: "19 – Use herança de color do body para <p>.",
-      codigo: `<!DOCTYPE html><html><head><style>p { color: inherit; }</style></head><body style=\"color: green;\"><p>Texto verde por herança?</p></body></html>`,
-      checks: ['p { color: inherit;', 'body style="color: green;"'] // ajustado
+      enunciado: "19 – Corrija erros de sintaxe ",
+      codigo: `<!DOCTYPE html><html><head><style>body { font-family Arial sans-serif color #333 background-color white padding 20px margin 0 auto max-width 800px p { font-size 16px line-height 1.5 color inherit } </style></head><body><p>Este é um parágrafo de teste com estilos corrigidos.</p></body></html>`,
+      checks: ['body {', 'font-family: Arial, sans-serif;', 'color: #333;', 'background-color: white;', 'padding: 20px;', 'margin: 0 auto;', 'max-width: 800px;', '}', 'p {', 'font-size: 16px;', 'line-height: 1.5;', 'color: inherit;', '}'] 
     },
     {
       enunciado: "20 – Use seletor universal * para reset de margins/paddings.",
@@ -278,9 +278,9 @@
       checks: ['#footer {', 'id="footer"', '<footer id'] 
     },
     {
-      enunciado: "25 – Corrija cascata: última regra de h1 deve prevalecer (azul).",
-      codigo: `<!DOCTYPE html><html><head><style>h1 { color: red; } h1 { color: blue; }</style></head><body><h1>Título com cor final?</h1></body></html>`,
-      checks: ['h1 { color: blue;', 'color: blue !important'] 
+      enunciado: "25 – Corrija múltiplos erros de sintaxe em regras CSS para h1, p e div",
+      codigo: `<!DOCTYPE html><html><head><style>h1 { color red text-align center font-size 24px margin-bottom 10px p { color blue font-weight bold line-height 1.6 div { background-color yellow padding 15px border 1px solid black border-radius 5px width 50% margin 20px auto h1 { color green } // comentário extra p { text-decoration underline } div { box-shadow 0 2px 4px rgba(0 0 0 0.1 </style></head><body><h1>Título Principal</h1><p>Este é um parágrafo.</p><div>Este é um div com estilos.</div></body></html>`,
+      checks: ['h1 {', 'color: red;', 'text-align: center;', 'font-size: 24px;', 'margin-bottom: 10px;', '}', 'p {', 'color: blue;', 'font-weight: bold;', 'line-height: 1.6;', '}', 'div {', 'background-color: yellow;', 'padding: 15px;', 'border: 1px solid black;', 'border-radius: 5px;', 'width: 50%;', 'margin: 20px auto;', 'box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);', '}'] 
     }
   ];
 
