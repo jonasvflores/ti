@@ -221,9 +221,9 @@
     <button id="btnGerarPDF" class="btn">Gerar PDF (Salvar e Bloquear)</button>
 
     <div style="margin-top:12px;">
-      <input type="password" id="senhaLiberacao" placeholder="Senha do professor (para liberar nova tentativa)" />
+      <input type="password" id="senhaLiberacao" placeholder="liberar nova tentativa" />
       <button id="btnLiberar" class="btn" style="margin-left:8px;">Liberar Nova Tentativa</button>
-      <p class="small" style="margin-top:8px;">Se precisar liberar reenvio para um aluno, digite a senha e clique em "Liberar Nova Tentativa".</p>
+      <p class="small" style="margin-top:8px;">"Liberar Nova Tentativa".</p>
     </div>
   </div>
 
@@ -608,7 +608,7 @@
       localStorage.removeItem(chaveLogs); 
       localStorage.removeItem(globalLogsKey); 
       document.getElementById('btnGerarPDF').disabled = false;
-      document.getElementById('btnGerarPDF').innerText = 'Gerar PDF (Salvar e Bloquear)';
+      document.getElementById('btnGerarPDF').innerText = 'Gerar PDF (Salvar )';
       alert('Nova tentativa liberada para ' + nome + ' / ' + turma);
     } else {
       alert('Senha incorreta.');
