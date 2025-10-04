@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prova HTML e CSS. -</title>
+  <style>
+
+     /* HUMMM.. POIS NÃO?  */
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f7f9fb;
+      color: #222;
+      line-height: 1.5;
+    }
+    h1, h2, h3 { text-align: center; color: #222; }
+    .secao {
+      background: #fff;
+      margin: 18px 0;
+      padding: 18px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .pergunta {
+      margin-bottom: 14px;
+      padding: 12px;
+      border-left: 4px solid #0b71c9;
+      background: #f6f9fd;
+      border-radius: 4px;
+    }
+    label { display: block; margin: 6px 0; cursor: pointer; }
+    input[type="radio"], input[type="checkbox"] { margin-right: 8px; }
+    select { width: 100%; padding: 6px; margin-top: 6px; }
+    textarea { width: 100%; height: 200px; font-family: monospace; padding: 8px; border-radius: 6px; border: 1px solid #ccc; }
+    .editor { display: flex; gap: 16px; flex-wrap: wrap; }
+    .editor textarea, .editor iframe { flex: 1 1 420px; min-width: 300px; height: 260px; }
+    iframe { border: 1px solid #ddd; border-radius: 6px; background: #fafafa; }
+    .btn {
+      background: #0b71c9; color: #fff; border: none; padding: 10px 16px;
+      border-radius: 6px; cursor: pointer; display: inline-block;
+    }
+    .btn:disabled { background: #9cc1ea; cursor: not-allowed; }
+    .small { font-size: 0.9em; color: #444; }
+    .nota-parcial { font-weight: bold; color: #0b71c9; margin-left: 12px; }
+    .center { text-align: center; }
+    .danger { color: #b00020; font-weight: bold; }
+    pre { background:#f3f4f6; padding:8px; border-radius:6px; overflow:auto; }
+    input[type="text"], input[type="password"] { padding:8px; border-radius:6px; border:1px solid #ccc; width: calc(100% - 18px); }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; align-items:center; }
+    #parte1, #parte2 { display: none; }
+    @media (max-width:700px) { .grid{ grid-template-columns: 1fr; } .editor textarea, .editor iframe{ height:200px; } }
+  </style>
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body oncontextmenu="return false;">
+  <h1>Prova  HTML e CSS </h1>
+  <p class="center small"><strong>Preencha Nome e Turma antes de iniciar.</strong> SÓ GERE O PDF DEPOIS QUE TIVER CERTEZA QUE TERMINOU</p>
+
+  <div class="secao">
+    <h2>Dados do Aluno</h2>
+    <div class="grid">
+      <label>Nome:<br><input type="text" id="nomeAluno" placeholder="Nomezinho aqui"></label>
+      <label>Turma:<br><input type="text" id="turmaAluno" placeholder="Turminha"></label>
+    </div>
+  </div>
+
+  <div class="secao" id="parte1">
+    <h2>Parte 1: Questões Teóricas (1-15)</h2>
+
+    <h3>Múltipla Escolha (1-5)</h3>
+    <div class="pergunta">
+      <strong>1. No conceito de semântica HTML, qual tag indica um rodapé de página ou seção?</strong>
+      <label><input type="radio" name="q1" value="a"> a) &lt;div&gt;</label>
+      <label><input type="radio" name="q1" value="b"> b) &lt;footer&gt;</label>
+      <label><input type="radio" name="q1" value="c"> c) &lt;span&gt;</label>
+      <label><input type="radio" name="q1" value="d"> d) &lt;br&gt;</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>2. No Box Model do CSS, qual camada fica entre o conteúdo e a borda?</strong>
+      <label><input type="radio" name="q2" value="a"> a) Margin</label>
+      <label><input type="radio" name="q2" value="b"> b) Border</label>
+      <label><input type="radio" name="q2" value="c"> c) Padding</label>
+      <label><input type="radio" name="q2" value="d"> d) Position</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>3. Qual seletor CSS tem a maior especificidade (pontuação 1000)?</strong>
+      <label><input type="radio" name="q3" value="a"> a) Classe (.exemplo)</label>
+      <label><input type="radio" name="q3" value="b"> b) ID (#exemplo)</label>
+      <label><input type="radio" name="q3" value="c"> c) Inline style (style="...")</label>
+      <label><input type="radio" name="q3" value="d"> d) Seletor universal (*)</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>4. Numa situação onde o CSS não aplica cor ao título porque usa ID mas o HTML tem class, qual é o erro principal?</strong>
+      <label><input type="radio" name="q4" value="a"> a) Falta de &lt;!DOCTYPE html&gt;</label>
+      <label><input type="radio" name="q4" value="b"> b) Incompatibilidade entre seletor # e class no HTML</label>
+      <label><input type="radio" name="q4" value="c"> c) Tag &lt;style&gt; fora de &lt;head&gt;</label>
+      <label><input type="radio" name="q4" value="d"> d) Ausência de meta charset</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>5. Qual framework CSS permite usar classes prontas como "btn btn-primary"?</strong>
+      <label><input type="radio" name="q5" value="a"> a) Uiverse.io</label>
+      <label><input type="radio" name="q5" value="b"> b) Bootstrap</label>
+      <label><input type="radio" name="q5" value="c"> c) Flexbox</label>
+      <label><input type="radio" name="q5" value="d"> d) DOM Tree</label>
+    </div>
+
+    <h3>Verdadeiro ou Falso (6-10)</h3>
+
+    <div class="pergunta">
+      <strong>6. O CSS é uma linguagem imperativa, como JavaScript.</strong>
+      <label><input type="checkbox" id="q6v"> Verdadeiro</label>
+      <label><input type="checkbox" id="q6f"> Falso</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>7. Hiperlinks (&lt;a href&gt;) transformam a web em um grafo.</strong>
+      <label><input type="checkbox" id="q7v"> Verdadeiro</label>
+      <label><input type="checkbox" id="q7f"> Falso</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>8. No seletor de classe, você usa # seguido do nome.</strong>
+      <label><input type="checkbox" id="q8v"> Verdadeiro</label>
+      <label><input type="checkbox" id="q8f"> Falso</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>9. A herança no CSS faz com que 'color' passe do elemento pai para os filhos.</strong>
+      <label><input type="checkbox" id="q9v"> Verdadeiro</label>
+      <label><input type="checkbox" id="q9f"> Falso</label>
+    </div>
+
+    <div class="pergunta">
+      <strong>10. Seletor "link { color: blue; }" não funciona para &lt;a&gt;.</strong>
+      <label><input type="checkbox" id="q10v"> Verdadeiro</label>
+      <label><input type="checkbox" id="q10f"> Falso</label>
+    </div>
+
+    <h3>Relacionar (11-15)</h3>
+    <p class="small">Relacione a coluna A com a coluna B usando os selects.</p>
+
+    <div class="pergunta">
+      <strong>11. Seletor universal (*)</strong>
+      <select id="rel11">
+        <option value="">Selecione...</option>
+        <option value="a">a) Espaçamento externo entre elementos</option>
+        <option value="b">b) Aplica estilos a TODOS os elementos da página</option>
+        <option value="c">c) Framework que usa &lt;link&gt; para carregar estilos</option>
+        <option value="d">d) &lt;em&gt; semântico vs &lt;i&gt;</option>
+        <option value="e">e) Marcadores aparecem por padrão</option>
+      </select>
+    </div>
+
+    <div class="pergunta">
+      <strong>12. Tag &lt;em&gt; vs. &lt;i&gt;</strong>
+      <select id="rel12">
+        <option value="">Selecione...</option>
+        <option value="a">a) Espaçamento externo entre elementos</option>
+        <option value="b">b) Aplica estilos a TODOS os elementos da página</option>
+        <option value="c">c) Framework que usa &lt;link&gt; para carregar estilos</option>
+        <option value="d">d) &lt;em&gt; tem ênfase semântica; &lt;i&gt; só itálico</option>
+        <option value="e">e) Marcadores aparecem por padrão</option>
+      </select>
+    </div>
+
+    <div class="pergunta">
+      <strong>13. Margin no Box Model</strong>
+      <select id="rel13">
+        <option value="">Selecione...</option>
+        <option value="a">a) Espaçamento externo entre elementos</option>
+        <option value="b">b) Aplica estilos a TODOS os elementos</option>
+        <option value="c">c) Framework que usa &lt;link&gt; para carregar estilos</option>
+        <option value="d">d) &lt;em&gt; semântico vs &lt;i&gt;</option>
+        <option value="e">e) Marcadores aparecem por padrão</option>
+      </select>
+    </div>
+
+    <div class="pergunta">
+      <strong>14. Erro comum em listas &lt;ul&gt; sem CSS</strong>
+      <select id="rel14">
+        <option value="">Selecione...</option>
+        <option value="a">a) Espaçamento externo entre elementos</option>
+        <option value="b">b) Aplica estilos a TODOS os elementos</option>
+        <option value="c">c) Framework que usa &lt;link&gt; para carregar estilos</option>
+        <option value="d">d) &lt;em&gt; semântico vs &lt;i&gt;</option>
+        <option value="e">e) Marcadores aparecem por padrão; use list-style: none;</option>
+      </select>
+    </div>
+
+    <div class="pergunta">
+      <strong>15. Bootstrap CDN</strong>
+      <select id="rel15">
+        <option value="">Selecione...</option>
+        <option value="a">a) Espaçamento externo entre elementos</option>
+        <option value="b">b) Aplica estilos a TODOS os elementos</option>
+        <option value="c">c) Framework que usa &lt;link&gt; para carregar estilos</option>
+        <option value="d">d) &lt;em&gt; semântico vs &lt;i&gt;</option>
+        <option value="e">e) Marcadores aparecem por padrão</option>
+      </select>
+    </div>
+
+  </div>
+  <div class="secao" id="parte2">
+    <h2>Parte 2: Questões Práticas de Correção (16-25)</h2>
+    <p class="small center">Edite o código no campo à esquerda. Clique "Rodar" para ver o preview. A correção definitiva é feita apenas ao gerar o PDF.</p>
+
+    <div id="exercicios-correcao"></div>
+  </div>
+
+  <div class="secao center">
+    <p id="msgSemResposta" class="danger" style="display:none;">Por favor, responda a <strong>todas</strong> as questões antes de gerar o PDF.</p>
+
+    <button id="btnGerarPDF" class="btn">Gerar PDF (Salvar )</button>
+
+    <div style="margin-top:12px;">
+      <input type="password" id="senhaLiberacao" placeholder="liberar nova tentativa" />
+      <button id="btnLiberar" class="btn" style="margin-left:8px;">Liberar Nova Tentativa</button>
+      <p class="small" style="margin-top:8px;"><sub>Prof. Jonas Flores</sub></p>
+    </div>
+  </div>
+
+  <div class="secao center">
+    <blockquote style="font-style: italic; font-size: 1.2em; margin-bottom: 20px;">"Um Jedi usa a Força para conhecimento e defesa, nunca para o ataque"</blockquote>
+    <pre style="font-family: monospace; white-space: pre; background: transparent; border: none; margin: 0; padding: 0;">⠀⢀⣠⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣶⡾⠿⠿⠿⠿⢷⣶⣦⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢰⣿⡟⠛⠛⠛⠻⠿⠿⢿⣶⣶⣦⣤⣤⣀⣀⡀⣀⣴⣾⡿⠟⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠉⠙⠻⢿⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⡀
+⠀⠻⣿⣦⡀⠀⠉⠓⠶⢦⣄⣀⠉⠉⠛⠛⠻⠿⠟⠋⠁⠀⠀⠀⣤⡀⠀⠀⢠⠀⠀⠀⣠⠀⠀⠀⠀⠈⠙⠻⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠟⠛⠛⢻⣿
+⠀⠀⠈⠻⣿⣦⠀⠀⠀⠀⠈⠙⠻⢷⣶⣤⡀⠀⠀⠀⠀⢀⣀⡀⠀⠙⢷⡀⠸⡇⠀⣰⠇⠀⢀⣀⣀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣤⣶⡶⠶⠶⠒⠂⠀⠀⣠⣾⠟
+⠀⠀⠀⠀⠈⢿⣷⡀⠀⠀⠀⠀⠀⠀⠈⢻⣿⡄⣠⣴⣿⣯⣭⣽⣷⣆⠀⠁⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⣦⡀⠀⣠⣾⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⣠⣾⡟⠁⠀
+⠀⠀⠀⠀⠀⠈⢻⣷⣄⠀⠀⠀⠀⠀⠀⠀⣿⡗⢻⣿⣧⣽⣿⣿⣿⣧⠀⠀⣀⣀⠀⢠⣿⣧⣼⣿⣿⣿⣿⠗⠰⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⡿⠋⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠙⢿⣶⣄⡀⠀⠀⠀⠀⠸⠃⠈⠻⣿⣿⣿⣿⣿⡿⠃⠾⣥⡬⠗⠸⣿⣿⣿⣿⣿⡿⠛⠀⢀⡟⠀⠀⠀⠀⠀⠀⣀⣠⣾⡿⠋⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠉⠛⠿⣷⣶⣤⣤⣄⣰⣄⠀⠀⠉⠉⠉⠁⠀⢀⣀⣠⣄⣀⡀⠀⠉⠉⠉⠀⠀⢀⣠⣾⣥⣤⣤⣤⣶⣶⡿⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⢻⣿⠛⢿⣷⣦⣤⣴⣶⣶⣦⣤⣤⣤⣤⣬⣥⡴⠶⠾⠿⠿⠿⠿⠛⢛⣿⣿⣿⣯⡉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣧⡀⠈⠉⠀⠈⠁⣾⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣿⠟⠉⣹⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣸⣿⣿⣦⣀⠀⠀⠀⢻⡀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣶⣿⠋⣿⠛⠃⠀⣈⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡿⢿⡀⠈⢹⡿⠶⣶⣼⡇⠀⢀⣀⣀⣤⣴⣾⠟⠋⣡⣿⡟⠀⢻⣶⠶⣿⣿⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣷⡈⢿⣦⣸⠇⢀⡿⠿⠿⡿⠿⠿⣿⠛⠋⠁⠀⣴⠟⣿⣧⡀⠈⢁⣰⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⢻⣦⣈⣽⣀⣾⠃⠀⢸⡇⠀⢸⡇⠀⢀⣠⡾⠋⢰⣿⣿⣿⣿⡿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⢿⣿⣿⡟⠛⠃⠀⠀⣾⠀⠀⢸⡇⠐⠿⠋⠀⠀⣿⢻⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠁⢀⡴⠋⠀⣿⠀⠀⢸⠇⠀⠀⠀⠀⠀⠁⢸⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣁⣀⠀⠀⠀⠀⣿⡀⠀⣿⠀⠀⠀⠀⠀⠀⢀⣈⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠟⠛⠋⠀⠀</pre>
+  </div>
+
+  <script>
+  const gabaritoMultipla = {1: 'b', 2: 'c', 3: 'c', 4: 'b', 5: 'b'};
+  const gabaritoVF = {6: 'f', 7: 'v', 8: 'f', 9: 'v', 10: 'v'};
+  const gabaritoRelacionar = {11: 'b', 12: 'd', 13: 'a', 14: 'e', 15: 'c'};
+  const exerciciosPraticos = [
+    {
+      enunciado: "16 – Corrija tags de hiperlink e use <nav> semântico.",
+      codigo: `<!DOCTYPE html><html><head><title>Menu</title></head><body><div><a href="home.html">Home</a><a href="sobre.html">Sobre</a></div></body></html>`,
+      checks: ['<nav>', 'href="home', '</nav>'] 
+    },
+    {
+      enunciado: "17 – Corrija seletor de classe para <header> semântico.",
+      codigo: `<!DOCTYPE html><html><head><style>.cabe { background: blue; color: white; }</style></head><body><header>Cabeçalho</header></body></html>`,
+      checks: ['.header {', 'header { background: blue', '<header class'] // ajustado 
+    },
+    {
+      enunciado: "18 – Adicione padding e margin no box model para o div.",
+      codigo: `<!DOCTYPE html><html><head><style>div { border: 1px solid black; }</style></head><body><div>Caixa sem espaçamento</div></body></html>`,
+      checks: ['padding: 10px;', 'margin: 10px;'] 
+    },
+    {
+      enunciado: "19 – Corrija erros de sintaxe ",
+      codigo: `<!DOCTYPE html><html><head><style>body { font-family Arial sans-serif color #333 background-color white padding 20px margin 0 auto max-width 800px p { font-size 16px line-height 1.5 color inherit } </style></head><body><p>Este é um parágrafo de teste com estilos corrigidos.</p></body></html>`,
+      checks: ['body {', 'font-family: Arial, sans-serif;', 'color: #333;', 'background-color: white;', 'padding: 20px;', 'margin: 0 auto;', 'max-width: 800px;', '}', 'p {', 'font-size: 16px;', 'line-height: 1.5;', 'color: inherit;', '}'] 
+    },
+    {
+      enunciado: "20 – Corrija os erros de sintaxe no código",
+      codigo: `<!DOCTYPE html>\n<html>\n<head>\n<title>Teste Correção</title>\n<style>\nbody {\n  background-color: white\n  color: blackk;\n}\n\n.main-title {\n  color: red;\n  font-size: 24px\n}\n\np {\n  line-height 1.5\n}\n</style>\n</head>\n<body>\n<h1 id="main-title">Título Principal</h1>\n<p>Este é um parágrafo.\n<div clas="container">Container</div>\n</body>\n</html>`,
+      checks: ['background-color: white;', 'color: black;', '#main-title {', 'font-size: 24px;', 'line-height: 1.5;', 'class="container"'] 
+    },
+    {
+      enunciado: "21 – Troque <i> por <em> ênfase semântica.",
+      codigo: `<!DOCTYPE html><html><head></head><body><p>Leia com <i>atenção</i> especial.</p></body></html>`,
+      checks: ['<em>atenção</em>', '<em>', '</em>'] 
+    },
+    {
+      enunciado: "22 – Feche tags <li> e use list-style: none <ul>",
+      codigo: `<!DOCTYPE html><html><head><style>ul { list-style: disc; }</style></head><body><ul><li>Item 1<li>Item 2</ul></body></html>`,
+      checks: ['<li>Item 1</li>', '<li>Item 2</li>', 'list-style: none;'] 
+    },
+    {
+      enunciado: "23 – Corrija href em <a> e adicione target=\"_blank\".",
+      codigo: `<!DOCTYPE html><html><head></head><body><a hrf="https://example.com">Link</a></body></html>`,
+      checks: ['href="https://example.com"', 'target="_blank"', '<a href'] 
+    },
+    {
+      enunciado: "24 – Corrija seletor ID para <footer> único.",
+      codigo: `<!DOCTYPE html><html><head><style>#rodape { text-align: center; color: gray; }</style></head><body><footer class="rodape">© 2025</footer></body></html>`,
+      checks: ['#footer {', 'id="footer"', '<footer id'] 
+    },
+    {
+      enunciado: "25 – Corrija múltiplos erros de sintaxe em regras CSS para h1, p e div",
+      codigo: `<!DOCTYPE html><html><head><style>h1 { color red text-align center font-size 24px margin-bottom 10px p { color blue font-weight bold line-height 1.6 div { background-color yellow padding 15px border 1px solid black border-radius 5px width 50% margin 20px auto h1 { color green } // comentário extra p { text-decoration underline } div { box-shadow 0 2px 4px rgba(0 0 0 0.1 </style></head><body><h1>Título Principal</h1><p>Este é um parágrafo.</p><div>Este é um div com estilos.</div></body></html>`,
+      checks: ['h1 {', 'color: red;', 'text-align: center;', 'font-size: 24px;', 'margin-bottom: 10px;', '}', 'p {', 'color: blue;', 'font-weight: bold;', 'line-height: 1.6;', '}', 'div {', 'background-color: yellow;', 'padding: 15px;', 'border: 1px solid black;', 'border-radius: 5px;', 'width: 50%;', 'margin: 20px auto;', 'box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);', '}'] 
+    }
+  ];
+
+  const containerPratico = document.getElementById('exercicios-correcao');
+  exerciciosPraticos.forEach((ex, idx) => {
+    const i = 16 + idx;
+    const div = document.createElement('div');
+    div.className = 'pergunta';
+    div.innerHTML = `
+      <p><strong>Questão ${i}:</strong> ${ex.enunciado}</p>
+      <div class="editor">
+        <textarea id="code${i}">${ex.codigo}</textarea>
+        <iframe id="preview${i}" title="preview${i}"></iframe>
+      </div>
+      <div style="margin-top:8px;">
+        <button class="btn" onclick="runCode(${i})">Rodar</button>
+        <button class="btn" onclick="mostrarFeedback(${i})">Verificar (apenas feedback)</button>
+        <span id="parcial${i}" class="nota-parcial"></span>
+      </div>
+    `;
+    containerPratico.appendChild(div);
+  });
+
+  // iframe
+  window.runCode = function(i) {
+    const code = document.getElementById('code' + i).value;
+    const iframe = document.getElementById('preview' + i);
+    iframe.srcdoc = code;
+  };
+
+  window.mostrarFeedback = function(i) {
+    const idx = i - 16;
+    const code = (document.getElementById('code' + i).value || '').toLowerCase();
+    const checks = exerciciosPraticos[idx].checks;
+    let ok = 0;
+    let notas = [];
+    checks.forEach(c => {
+      const found = code.includes(c.toLowerCase());
+      notas.push(`${c}: ${found ? '✓' : '—'}`);
+      if (found) ok++;
+    });
+    const parcial = (ok / checks.length).toFixed(2);
+    document.getElementById('parcial' + i).innerText = `Feedback: ${notas.join(' | ')} — Acertos: ${ok}/${checks.length}`;
+  };
+
+  // -------------------------
+
+  function todasRespondidas() {
+    const nome = document.getElementById('nomeAluno').value.trim();
+    const turma = document.getElementById('turmaAluno').value.trim();
+    if (!nome || !turma) return false;
+
+    for (let i=1;i<=5;i++){
+      if (!document.querySelector(`input[name="q${i}"]:checked`)) return false;
+    }
+    for (let i=6;i<=10;i++){
+      const v = document.getElementById(`q${i}v`);
+      const f = document.getElementById(`q${i}f`);
+      if (!((v && v.checked) || (f && f.checked))) return false;
+    }
+    for (let i=11;i<=15;i++){
+      const sel = document.getElementById(`rel${i}`);
+      if (!sel || sel.value === '') return false;
+    }
+    for (let i=16;i<=25;i++){
+      const ta = document.getElementById('code' + i);
+      if (!ta || ta.value.trim() === '') return false;
+    }
+    return true;
+  }
+
+  function calcularPraticas() {
+    let total = 0;
+    const detalhamento = [];
+    for (let idx=0; idx<exerciciosPraticos.length; idx++){
+      const i = 16 + idx;
+      const code = document.getElementById('code' + i).value || '';
+      const codeLower = code.toLowerCase();
+      const checks = exerciciosPraticos[idx].checks;
+      let ok = 0;
+      checks.forEach(c => {
+        if (codeLower.includes(c.toLowerCase())) ok++;
+      });
+      const parcial = checks.length ? (ok / checks.length) : 0;
+      total += parcial;
+      detalhamento.push({ questao: i, ok, totalChecks: checks.length, parcial: parcial });
+    }
+    return { totalPraticas: total, detalhamento }; 
+  }
+
+
+  const senhaFragmentsBase64 = [
+    'ZW4=', // 'g'
+    'ZXI=', // 'n'
+    'Z28=', // 'i'
+    'bg=='  // 'o'
+  ];
+  function b64DecodeUnicode(str) {
+    return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+  }
+  function getSenhaProfessor() {
+    return senhaFragmentsBase64.map(b64DecodeUnicode).join('');
+  }
+  function localStorageKeyForAluno(nome, turma) {
+    const n = (nome || '').trim();
+    const t = (turma || '').trim();
+    return `provaFinalizada_${n.replace(/\s+/g,'_')}_${t.replace(/\s+/g,'_')}`;
+  }
+  let globalLogsKey = 'provaLogs_temp';
+  function localStorageKeyForLogs(nome, turma) {
+    const n = (nome || '').trim();
+    const t = (turma || '').trim();
+    if (!n || !t) {
+      return globalLogsKey;
+    }
+    return `provaLogs_${n.replace(/\s+/g,'_')}_${t.replace(/\s+/g,'_')}`;
+  }
+  function registrarTentativa(tipo) {
+    let chave = localStorageKeyForLogs(); //  current state pra controle
+    let logs = JSON.parse(localStorage.getItem(chave) || '[]');
+    const agora = new Date().toLocaleString('pt-BR');
+    logs.push(`${agora}: Tentativa de ${tipo}`);
+    localStorage.setItem(chave, JSON.stringify(logs));
+    const nome = document.getElementById('nomeAluno').value.trim();
+    const turma = document.getElementById('turmaAluno').value.trim();
+    if (nome && turma && chave === globalLogsKey) {
+      const realChave = localStorageKeyForLogs(nome, turma);
+      let realLogs = JSON.parse(localStorage.getItem(realChave) || '[]');
+      realLogs = realLogs.concat(logs);
+      localStorage.setItem(realChave, JSON.stringify(realLogs));
+      localStorage.removeItem(globalLogsKey); //  temp
+    }
+  }
+
+  function aplicarBloqueioSeJaRespondido() {
+    const nome = document.getElementById('nomeAluno').value.trim();
+    const turma = document.getElementById('turmaAluno').value.trim();
+    if (!nome || !turma) return; // sem dados 
+    const chave = localStorageKeyForAluno(nome, turma);
+    if (localStorage.getItem(chave) === 'true') {
+      document.getElementById('btnGerarPDF').disabled = true;
+      document.getElementById('btnGerarPDF').innerText = 'Prova já finalizada';
+    }
+  }
+
+  function checkFields() {
+    const nome = document.getElementById('nomeAluno').value.trim();
+    const turma = document.getElementById('turmaAluno').value.trim();
+    if (nome && turma) {
+      document.getElementById('parte1').style.display = 'block';
+      document.getElementById('parte2').style.display = 'block';
+      aplicarBloqueioSeJaRespondido();
+    } else {
+      document.getElementById('parte1').style.display = 'none';
+      document.getElementById('parte2').style.display = 'none';
+    }
+  }
+
+  document.getElementById('nomeAluno').addEventListener('input', checkFields);
+  document.getElementById('turmaAluno').addEventListener('input', checkFields);
+
+  // -------------------------
+  // -------------------------
+  document.getElementById('btnGerarPDF').addEventListener('click', async function() {
+    const nome = document.getElementById('nomeAluno').value.trim();
+    const turma = document.getElementById('turmaAluno').value.trim();
+
+    if (!nome || !turma) {
+      alert('Preencha Nome e Turma antes de gerar o PDF.');
+      return;
+    }
+
+    const chave = localStorageKeyForAluno(nome, turma);
+    if (localStorage.getItem(chave) === 'true') {
+      alert('Prova já finalizada neste navegador para este aluno/turma.');
+      return;
+    }
+
+    if (!todasRespondidas()) {
+      document.getElementById('msgSemResposta').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    } else {
+      document.getElementById('msgSemResposta').style.display = 'none';
+    }
+
+    for (let i = 16; i <= 25; i++) {
+      runCode(i);
+    }
+
+    const praticasResult = calcularPraticas();
+
+    const chaveLogs = localStorageKeyForLogs(nome, turma);
+    let logs = JSON.parse(localStorage.getItem(chaveLogs) || '[]');
+    const tempLogs = JSON.parse(localStorage.getItem(globalLogsKey) || '[]');
+    if (tempLogs.length > 0) {
+      logs = logs.concat(tempLogs);
+      localStorage.removeItem(globalLogsKey);
+    }
+
+    const hoje = new Date();
+    const dataBR = hoje.toLocaleDateString('pt-BR');
+    const safeName = nome.replace(/[^\w\d_-]/g, '_');
+    const safeTurma = turma.replace(/[^\w\d_-]/g, '_');
+    const filename = `${safeName}_${safeTurma}_${dataBR.replace(/\//g,'-')}.pdf`;
+
+    const linhas = [];
+    linhas.push(`Prova: HTML e CSS - 25 Questões`);
+    linhas.push(`Data: ${dataBR}`);
+    linhas.push(`Aluno: ${nome}`);
+    linhas.push(`Turma: ${turma}`);
+    linhas.push('------------------------------------------------------------');
+    linhas.push('RESPOSTAS DO ALUNO:');
+    for (let i=1;i<=5;i++){
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      const resp = sel ? sel.value : '(sem resposta)';
+      linhas.push(`${i}. (Múltipla) resposta: ${resp}`);
+    }
+    for (let i=6;i<=10;i++){
+      const v = document.getElementById(`q${i}v`);
+      const f = document.getElementById(`q${i}f`);
+      const resp = v && v.checked ? 'v' : (f && f.checked ? 'f' : '(sem resposta)');
+      linhas.push(`${i}. (V/F) resposta: ${resp}`);
+    }
+    for (let i=11;i<=15;i++){
+      const sel = document.getElementById('rel' + i);
+      const resp = sel && sel.value ? sel.value : '(sem resposta)';
+      linhas.push(`${i}. (Relacionar) resposta: ${resp}`);
+    }
+
+    linhas.push('------------------------------------------------------------');
+    linhas.push('RESPOSTAS PRÁTICAS (código enviado, resultado renderizado e acertos por exercício):');
+
+    for (let idx=0; idx<exerciciosPraticos.length; idx++){
+      const i = 16 + idx;
+      const codigo = document.getElementById('code' + i).value || '';
+      const codeEsc = codigo.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const checks = exerciciosPraticos[idx].checks;
+      const codeLower = codigo.toLowerCase();
+      let ok = 0;
+      checks.forEach(c => {
+        if (codeLower.includes(c.toLowerCase())) ok++;
+      });
+      const parcial = checks.length ? (ok / checks.length) : 0;
+
+      linhas.push(`${i}. Acertos: ${ok}/${checks.length}`);
+      linhas.push(`Código corrigido:`);
+      const codeLines = codigo.split('\n');
+      for (const cl of codeLines) {
+        linhas.push(`   ${cl}`);
+      }
+      linhas.push('');
+
+      const iframe = document.getElementById(`preview${i}`);
+      let rendered = 'Preview não disponível (erro no carregamento)';
+      if (iframe && iframe.contentDocument && iframe.contentDocument.body) {
+        rendered = iframe.contentDocument.body.innerHTML;
+      }
+      const renderedEsc = rendered.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      linhas.push(`Resultado renderizado (HTML interno):`);
+      const renderedLines = renderedEsc.split('\n');
+      for (const rl of renderedLines) {
+        linhas.push(`   ${rl}`);
+      }
+      linhas.push(''); 
+    }
+
+    linhas.push('------------------------------------------------------------');
+    linhas.push('LOGS DE TENTATIVAS DE VIOLAÇÃO:');
+    if (logs.length > 0) {
+      logs.forEach(log => {
+        linhas.push(`   ${log}`);
+      });
+    } else {
+      linhas.push('   Nenhuma tentativa registrada.');
+    }
+    linhas.push('');
+
+    linhas.push('------------------------------------------------------------');
+    linhas.push('Observações: Os acertos nas práticas são baseados em detecções automáticas de correções específicas.');
+    linhas.push('Se houver divergências, o professor pode revisar o PDF entregue.');
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+    const margin = 40;
+    const lineHeight = 12;
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const usableWidth = pageWidth - margin * 2;
+    let cursorY = margin;
+
+    doc.setFont('Helvetica', 'normal');
+    doc.setFontSize(12);
+
+    function drawWrapped(text) {
+      const linesWrapped = doc.splitTextToSize(text, usableWidth);
+      for (const l of linesWrapped) {
+        if (cursorY > doc.internal.pageSize.getHeight() - margin) {
+          doc.addPage();
+          cursorY = margin;
+          doc.setFontSize(12);
+        }
+        doc.text(l, margin, cursorY);
+        cursorY += lineHeight;
+      }
+    }
+
+    for (const l of linhas) {
+      drawWrapped(l);
+    }
+
+    doc.save(filename);
+
+    localStorage.setItem(chave, 'true');
+    document.getElementById('btnGerarPDF').disabled = true;
+    document.getElementById('btnGerarPDF').innerText = 'Prova já finalizada';
+
+    alert('PDF gerado e download iniciado. A prova foi bloqueada neste navegador para este aluno/turma.');
+  });
+
+  // -------------------------
+  // -------------------------
+  document.getElementById('btnLiberar').addEventListener('click', function() {
+    const senhaDigitada = document.getElementById('senhaLiberacao').value || '';
+    const nome = document.getElementById('nomeAluno').value.trim();
+    const turma = document.getElementById('turmaAluno').value.trim();
+    if (!nome || !turma) {
+      alert('Informe Nome e Turma para liberar a prova deste aluno.');
+      return;
+    }
+    const chave = localStorageKeyForAluno(nome, turma);
+    const chaveLogs = localStorageKeyForLogs(nome, turma);
+    const senhaCorreta = getSenhaProfessor(); 
+
+    if (senhaDigitada === senhaCorreta) {
+      localStorage.removeItem(chave);
+      localStorage.removeItem(chaveLogs); 
+      localStorage.removeItem(globalLogsKey); 
+      document.getElementById('btnGerarPDF').disabled = false;
+      document.getElementById('btnGerarPDF').innerText = 'Gerar PDF (Salvar )';
+      alert('Nova tentativa liberada para ' + nome + ' / ' + turma);
+    } else {
+      alert('Senha incorreta.');
+    }
+  });
+
+  window.addEventListener('load', function() {
+    checkFields();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.keyCode === 123) { 
+      e.preventDefault();
+      registrarTentativa('F12 (DevTools)');
+      return false;
+    }
+    if (e.ctrlKey) {
+      if (e.keyCode === 85) { 
+        e.preventDefault();
+        registrarTentativa('Ctrl+U (View Source)');
+        return false;
+      }
+      if (e.keyCode === 83) { 
+        e.preventDefault();
+        registrarTentativa('Ctrl+S (Save Page)');
+        return false;
+      }
+      if (e.keyCode === 67) { 
+        e.preventDefault();
+        registrarTentativa('Ctrl+C (Copy)');
+        return false;
+      }
+    }
+  });
+
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    registrarTentativa('Botão Direito (Context Menu)');
+    return false;
+  });
+
+  </script>
+
+</body>
+</html>
