@@ -276,7 +276,7 @@
       checks: ['body {', 'font-family: Arial, sans-serif;', 'color: #333;', 'background-color: white;', 'padding: 20px;', 'margin: 0 auto;', 'max-width: 800px;', '}', 'p {', 'font-size: 16px;', 'line-height: 1.5;', 'color: inherit;', '}'] 
     },
     {
-      enunciado: "20 – Corrija os erros de sintaxe no código",
+      enunciado: "20 – Corrija os erros de sintaxe no código, mas antes faça ele rodar",
       codigo: `<!DOCTYPE html>\n<html>\n<head>\n<title>Teste Correção<title>\n<style>\nbody {\n  background-color: white\n  color: blackk;\n}\n\n.main-title {\n  color: red;\n  font-size: 24px\n}\n\np {\n  line-height 1.5\n}\n</style>\n</head>\n<body>\n<h1 id="main-title">Título Principal</h1>\n<p>Este é um parágrafo.\n<div clas="container">Container</div>\n</body>\n</html>`,
       checks: ['background-color: white;', 'color: black;', '#main-title {', 'font-size: 24px;', 'line-height: 1.5;', 'class="container"'] 
     },
